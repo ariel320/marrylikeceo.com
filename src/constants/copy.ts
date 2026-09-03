@@ -8,8 +8,36 @@ export const COPY = {
       { label: "Community", href: "#community" },
       { label: "FAQ", href: "#faq" },
     ],
-    cta: "Event Calendar",
-    ctaHref: "https://luma.com/marrylikeceo",
+    cta: "Events",
+    ctaHref: "/events",
+  },
+  events: {
+    eyebrow: "The Calendar",
+    headline: "Events",
+    subhead: "Discover what’s coming next.",
+    intro:
+      "Every month, Ariel runs a live Experience — a different topic, a different angle, a different moment in the journey. Pick the one that meets you where you are.",
+    calendarEyebrow: "Upcoming Events",
+    calendarHeadline: "What’s on the calendar.",
+    calendarNote:
+      "Free to join. Dates and topics are released here first — reserve your seat below.",
+    embed: {
+      title: "Marry Like a CEO upcoming events on Luma",
+      loading: "Loading events",
+      helperPrefix: "Calendar not loading?",
+      helperLink: "Open it on Luma",
+      fallbackHeadline: "The calendar is being connected.",
+      fallbackBody:
+        "Upcoming Experiences will appear here shortly. In the meantime, every date is already live on the Marry Like a CEO calendar.",
+      fallbackCta: "View Upcoming Events",
+    },
+    cta: {
+      headline: "Don’t miss what’s next.",
+      subhead: "Join the community and stay connected.",
+      button: "Join the Community",
+      micro: "Free WhatsApp group for ambitious women.",
+      href: "https://chat.whatsapp.com/EkhW9OXTlGk668NwwcHzXc?mode=gi_t",
+    },
   },
   hero: {
     eyebrow: "A Roadmap to Marriage for Ambitious Women",
@@ -176,11 +204,12 @@ export const COPY = {
     email: "contact@marrylikeceo.com",
     copyright: `\u00A9 ${new Date().getFullYear()} Marry Like a CEO. All rights reserved.`,
     links: [
-      { label: "About", href: "#story" },
-      { label: "The System", href: "#the-system" },
-      { label: "The Experience", href: "#experience" },
-      { label: "The Book", href: "#book" },
-      { label: "Community", href: "#community" },
+      { label: "About", href: "/#story" },
+      { label: "The System", href: "/#the-system" },
+      { label: "The Experience", href: "/#experience" },
+      { label: "The Book", href: "/#book" },
+      { label: "Community", href: "/#community" },
+      { label: "Events", href: "/events" },
     ],
     socials: [
       {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +11,10 @@ import { cn } from "@/lib/utils";
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/";
+  const isEvents = pathname === COPY.nav.ctaHref;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -24,11 +29,22 @@ export const Navbar = () => {
     };
   }, [mobileOpen]);
 
-  const handleNav = useCallback((href: string) => {
-    setMobileOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  const handleNav = useCallback(
+    (href: string) => {
+      setMobileOpen(false);
+
+      // Section anchors only exist on the homepage — from any other route
+      // (e.g. /events) route home to the anchor instead of scrolling nowhere.
+      if (!isHome) {
+        router.push(`/${href}`);
+        return;
+      }
+
+      const el = document.querySelector(href);
+      el?.scrollIntoView({ behavior: "smooth" });
+    },
+    [isHome, router],
+  );
 
   return (
     <>
@@ -56,17 +72,18 @@ export const Navbar = () => {
               {link.label}
             </button>
           ))}
-          <Button
-            variant="secondary"
-            href={COPY.nav.ctaHref}
-            target="_blank"
-            className={cn(
-              "!px-6 !py-2.5 !text-xs uppercase tracking-[0.15em]",
-              !scrolled && "drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]",
-            )}
-          >
-            {COPY.nav.cta}
-          </Button>
+          <span aria-current={isEvents ? "page" : undefined}>
+            <Button
+              variant="secondary"
+              href={COPY.nav.ctaHref}
+              className={cn(
+                "!px-6 !py-2.5 !text-xs uppercase tracking-[0.15em]",
+                !scrolled && "drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]",
+              )}
+            >
+              {COPY.nav.cta}
+            </Button>
+          </span>
         </div>
 
         {/* Mobile hamburger */}
@@ -105,7 +122,6 @@ export const Navbar = () => {
             <Button
               variant="primary"
               href={COPY.nav.ctaHref}
-              target="_blank"
               onClick={() => setMobileOpen(false)}
               className="w-full !py-4"
             >

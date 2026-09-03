@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { cn } from "@/lib/utils";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
@@ -37,6 +39,16 @@ export const Button = ({
     variantStyles[variant],
     className,
   );
+
+  // Internal routes use next/link so navigation stays client-side (no new tab,
+  // no full reload). External links keep the plain anchor behaviour.
+  if (href && href.startsWith("/") && target !== "_blank") {
+    return (
+      <Link href={href} onClick={onClick} className={styles}>
+        {children}
+      </Link>
+    );
+  }
 
   if (href) {
     return (
