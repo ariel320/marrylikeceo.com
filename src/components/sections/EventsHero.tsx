@@ -20,7 +20,7 @@ export const EventsHero = () => {
   return (
     <Section
       theme="dark"
-      className="overflow-hidden pt-32! pb-16! lg:pt-[220px]! lg:pb-24!"
+      className="overflow-hidden bg-transparent! pt-32! pb-16! lg:pt-[220px]! lg:pb-24!"
     >
       <div className="mx-auto max-w-[820px] text-center">
         <motion.div

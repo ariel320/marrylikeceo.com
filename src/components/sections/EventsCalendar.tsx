@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { LumaEmbed } from "@/components/events/LumaEmbed";
+import { EventsList } from "@/components/events/EventsList";
 import { COPY } from "@/constants/copy";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -23,7 +23,7 @@ export const EventsCalendar = () => {
     <Section
       theme="dark"
       id="upcoming"
-      className="overflow-hidden pt-0! pb-24! lg:pb-[140px]!"
+      className="overflow-hidden bg-transparent! pt-0! pb-24! lg:pb-[140px]!"
     >
       <div className="mx-auto max-w-[980px]">
         <motion.div {...fadeUp(0)} className="flex items-center gap-4">
@@ -46,8 +46,8 @@ export const EventsCalendar = () => {
         </motion.p>
 
         <motion.div {...fadeUp(0.22)} className="mt-12 lg:mt-16">
-          {/* Luma calendar embed — configured in src/config/luma.ts */}
-          <LumaEmbed />
+          {/* Upcoming Experiences — data lives in src/config/events.ts */}
+          <EventsList />
         </motion.div>
       </div>
     </Section>

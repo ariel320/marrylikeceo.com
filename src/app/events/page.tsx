@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { EventsHero } from "@/components/sections/EventsHero";
 import { EventsCalendar } from "@/components/sections/EventsCalendar";
 import { EventsCTA } from "@/components/sections/EventsCTA";
+import { EventsBackdrop } from "@/components/events/EventsBackdrop";
 
 export const metadata: Metadata = {
   title: "Events - Marry Like a CEO",
@@ -29,8 +30,17 @@ export const metadata: Metadata = {
 const EventsPage = () => {
   return (
     <>
-      <EventsHero />
-      <EventsCalendar />
+      {/* Backdrop (floral flourish + gold arcs) is scoped to the hero's own
+       *  height only — it previously wrapped the calendar/card list too,
+       *  which put its large bottom-left bloom right on top of the event
+       *  cards. The card itself has its own small corner accents instead. */}
+      <div className="relative overflow-hidden bg-[var(--bg-dark)]">
+        <EventsBackdrop imageAlt="Ariel Yankelewitz, founder of Marry Like a CEO" />
+        <EventsHero />
+      </div>
+      <div className="relative bg-[var(--bg-dark)]">
+        <EventsCalendar />
+      </div>
       <EventsCTA />
     </>
   );

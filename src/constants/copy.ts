@@ -31,6 +31,11 @@ export const COPY = {
         "Upcoming Experiences will appear here shortly. In the meantime, every date is already live on the Marry Like a CEO calendar.",
       fallbackCta: "View Upcoming Events",
     },
+    moreComingSoon: "More Experiences Coming Soon",
+    viewAll: {
+      prefix: "Prefer to browse everything?",
+      linkText: "View the full calendar on Luma",
+    },
     cta: {
       headline: "Don’t miss what’s next.",
       subhead: "Join the community and stay connected.",
@@ -139,7 +144,7 @@ export const COPY = {
     closing:
       "Every Experience is a fraction of the journey. The journey is what changes everything.",
     cta: "See All Upcoming Experiences \u2192",
-    ctaHref: "https://luma.com/marrylikeceo",
+    ctaHref: "https://luma.com/marrylikeceo?e=evt-ZguSCFI6qH7se34",
     micro: "Free to join. Dates and topics released on the calendar first.",
     imageAlt: "Ariel Yankelewitz walking with purpose",
   },

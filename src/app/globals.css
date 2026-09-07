@@ -79,3 +79,70 @@ img {
     scroll-behavior: auto;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+ *  EVENT CARD — gold aura (Luma card redesign)
+ *  A thin conic-gradient ring traces the card edge and rotates.
+ *  Desktop: appears on hover/keyboard focus.
+ *  Touch devices: appears only while the card itself is pressed
+ *  (the .is-touched class is toggled from EventCard's touch
+ *  handlers) so scrolling past the card never triggers it.
+ * ───────────────────────────────────────────────────────────── */
+@keyframes event-card-aura-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.event-card-luma {
+  position: relative;
+  isolation: isolate;
+}
+
+.event-card-luma::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent 0deg,
+    var(--gold) 40deg,
+    color-mix(in srgb, var(--gold) 55%, white) 70deg,
+    var(--gold) 100deg,
+    transparent 160deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: event-card-aura-spin 3.2s linear infinite paused;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.event-card-luma:hover::before,
+.event-card-luma:focus-visible::before,
+.event-card-luma.is-touched::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.event-card-luma:hover,
+.event-card-luma:focus-visible,
+.event-card-luma.is-touched {
+  box-shadow:
+    0 12px 40px -8px color-mix(in srgb, var(--gold) 45%, transparent),
+    0 0 22px -4px color-mix(in srgb, var(--gold) 55%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-card-luma::before {
+    animation: none;
+  }
+}
