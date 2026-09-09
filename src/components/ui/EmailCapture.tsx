@@ -21,6 +21,8 @@ interface EmailCaptureProps {
   readonly buttonVariant?: "primary" | "secondary" | "ghost";
 }
 
+
+
 export const EmailCapture = ({
   source,
   variant = "inline",
