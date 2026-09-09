@@ -54,7 +54,7 @@ export const EVENTS: readonly EventItem[] = [
     mode: "Online",
     lumaUrl: "https://luma.com/l2bbgm0b?lm_source=embed",
     image: {
-      src: "/images/events/the-dating-code-poster.jpg",
+      src: "/images/events/the-dating-code-poster.png",
       alt: "Marry Like a CEO — The Dating Code, a free live Experience with Ariel Yankelewitz",
     },
     hostAvatar: {
