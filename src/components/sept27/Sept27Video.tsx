@@ -24,7 +24,7 @@ const fadeUp = (delay: number) => ({
  *  thumbnail if you have one).
  * ─────────────────────────────────────────────────────────────
  */
-const VIDEO_SRC = "/images/sample.mp4";
+const VIDEO_SRC = "/images/sample1.mp4";
 const POSTER_SRC = "";
 
 export const Sept27Video = () => {
