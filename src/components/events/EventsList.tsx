@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 
 import { Button } from "@/components/ui/Button";
@@ -86,11 +87,8 @@ const EventCard = ({ event, delay }: { readonly event: EventItem; readonly delay
   };
 
   return (
-    <motion.a
+    <motion.div
       {...fadeUp(delay)}
-      href={event.lumaUrl}
-      target="_blank"
-      rel="noopener noreferrer"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
@@ -156,22 +154,66 @@ const EventCard = ({ event, delay }: { readonly event: EventItem; readonly delay
             </span>
           )}
         </div>
+
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+          {event.detailsHref && (
+            <Link
+              href={event.detailsHref}
+              className="font-[family-name:var(--font-dm-sans)] text-[13px] font-medium text-[var(--gold)] underline-offset-4 transition-colors duration-200 hover:underline"
+            >
+              {COPY.events.cardSeeMore}
+            </Link>
+          )}
+          <a
+            href={event.lumaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-[family-name:var(--font-dm-sans)] text-[13px] font-semibold text-[var(--text-light)] underline-offset-4 transition-colors duration-200 hover:text-[var(--gold)] hover:underline"
+          >
+            {COPY.events.cardRegister}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </div>
 
-      <div className="relative aspect-[4/5] w-full flex-none overflow-hidden rounded-xl ring-1 ring-[var(--gold)]/25 sm:aspect-auto sm:h-28 sm:w-24">
-        <Image
-          src={event.image.src}
-          alt={event.image.alt}
-          fill
-          sizes="(max-width: 639px) 100vw, 120px"
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
-          aria-hidden="true"
-        />
-      </div>
-    </motion.a>
+      {event.detailsHref ? (
+        <Link
+          href={event.detailsHref}
+          className="relative aspect-[4/5] w-full flex-none overflow-hidden rounded-xl ring-1 ring-[var(--gold)]/25 sm:aspect-auto sm:h-28 sm:w-24"
+        >
+          <Image
+            src={event.image.src}
+            alt={event.image.alt}
+            fill
+            sizes="(max-width: 639px) 100vw, 120px"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+            aria-hidden="true"
+          />
+        </Link>
+      ) : (
+        <a
+          href={event.lumaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative aspect-[4/5] w-full flex-none overflow-hidden rounded-xl ring-1 ring-[var(--gold)]/25 sm:aspect-auto sm:h-28 sm:w-24"
+        >
+          <Image
+            src={event.image.src}
+            alt={event.image.alt}
+            fill
+            sizes="(max-width: 639px) 100vw, 120px"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+            aria-hidden="true"
+          />
+        </a>
+      )}
+    </motion.div>
   );
 };
 

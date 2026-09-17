@@ -27,6 +27,12 @@ export interface EventItem {
   readonly mode: EventMode;
   /** Link to the specific event page on Luma. */
   readonly lumaUrl: string;
+  /**
+   * Internal landing page for this event (e.g. "/sept-27"), used by the
+   * homepage's upcoming-event banner as the "click through" destination.
+   * Falls back to `lumaUrl` when omitted.
+   */
+  readonly detailsHref?: string;
   readonly image: {
     readonly src: string;
     readonly alt: string;
@@ -53,6 +59,7 @@ export const EVENTS: readonly EventItem[] = [
     location: "Zoom",
     mode: "Online",
     lumaUrl: "https://luma.com/l2bbgm0b?lm_source=embed",
+    detailsHref: "/sept-27",
     image: {
       src: "/images/events/the-dating-code-poster.png",
       alt: "Marry Like a CEO — The Dating Code, a free live Experience with Ariel Yankelewitz",
@@ -67,6 +74,32 @@ export const EVENTS: readonly EventItem[] = [
     },
   },
 ];
+
+/**
+ * Returns the next event that hasn't happened yet, or `null` when the list
+ * is empty or every event's date has passed.
+ *
+ * This is the single check that drives the homepage's upcoming-event
+ * banner: add a future-dated entry to `EVENTS` above and the banner shows
+ * itself automatically; once that date is behind "today" it disappears on
+ * its own, with nothing else to update.
+ *
+ * An event stays "upcoming" through the end of its own calendar day (UTC,
+ * matching how `dateISO` is parsed elsewhere in this file) so the banner
+ * doesn't vanish mid-event — only starting the day after.
+ */
+export const getNextUpcomingEvent = (
+  events: readonly EventItem[] = EVENTS,
+  now: Date = new Date(),
+): EventItem | null => {
+  const todayISO = now.toISOString().slice(0, 10);
+
+  const upcoming = [...events]
+    .filter((event) => event.dateISO >= todayISO)
+    .sort((a, b) => a.dateISO.localeCompare(b.dateISO));
+
+  return upcoming[0] ?? null;
+};
 
 interface EventGroup {
   readonly dateISO: string;

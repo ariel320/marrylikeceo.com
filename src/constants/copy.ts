@@ -11,6 +11,11 @@ export const COPY = {
     cta: "Events",
     ctaHref: "/events",
   },
+  homeEventBanner: {
+    eyebrow: "Upcoming Live Experience",
+    cta: "View Details",
+    dismissLabel: "Dismiss this announcement",
+  },
   events: {
     eyebrow: "The Calendar",
     headline: "Events",
@@ -21,6 +26,8 @@ export const COPY = {
     calendarHeadline: "What’s on the calendar.",
     calendarNote:
       "Free to join. Dates and topics are released here first — reserve your seat below.",
+    cardSeeMore: "See More",
+    cardRegister: "Register on Luma",
     embed: {
       title: "Marry Like a CEO upcoming events on Luma",
       loading: "Loading events",
@@ -203,6 +210,126 @@ export const COPY = {
     micro: "No spam. Unsubscribe anytime.",
     hashtag: "#IChooseHim",
     imageAlt: "Ariel Yankelewitz glancing back over her shoulder, black and white",
+  },
+  sept27: {
+    meta: {
+      title: "The September 27th Experience — Marry Like a CEO",
+      description:
+        "One live virtual Experience with Ariel Yankelewitz. The exact framework she used to choose her second husband — live, September 27, 2026. Free to attend.",
+    },
+    hero: {
+      eyebrow: "One Night. One Room. One Decision.",
+      headline: "THE DATING CODE:",
+      headlineAccent: "Change the way you date — change your life.",
+      subhead:
+        "A live virtual Experience with Ariel Yankelewitz — the exact framework she used to choose her second husband, walked through in one sitting.",
+      freeBadge: "Free Live Event",
+      cta: "Reserve Your Seat",
+      ctaMicro: "Free to attend. Seats are limited on the live broadcast.",
+      imageAlt: "Ariel Yankelewitz",
+      posterEyebrow: "Ariel Yankelewitz",
+      posterHeadline: "The Dating Code",
+    },
+    invitation: {
+      eyebrow: "You're Invited",
+      headline: "The September 27th Experience",
+      dateLabel: "September 27, 2026",
+      dayLabel: "Sunday",
+      timeLabel: "6:00 PM ET",
+      formatLabel: "Live Virtual — Link Sent After Registration",
+      body: "Ninety minutes with Ariel. The strategy, the standards, the exact sequence — taught the way she'd teach it to a friend she respected too much to waste her time.",
+      cta: "Reserve on Luma",
+      micro: "Registration happens on Luma — you'll get the link there.",
+    },
+    countdown: {
+      eyebrow: "Doors Close In",
+      headline: "The clock is the strategy.",
+      subhead:
+        "You've run deadlines your whole career. This one gets you to the room.",
+      labels: {
+        days: "Days",
+        hours: "Hours",
+        minutes: "Minutes",
+        seconds: "Seconds",
+      },
+      liveHeadline: "We're live right now.",
+      liveBody: "The room is open. Reserve your seat to get the link.",
+      pastHeadline: "This Experience has closed.",
+      pastBody:
+        "Join the calendar to catch the next live Experience with Ariel.",
+    },
+    whyAttend: {
+      eyebrow: "Why Attend",
+      headline: "Not a pep talk.",
+      headlineAccent: "A working session.",
+      cards: [
+        {
+          icon: "Target",
+          title: "The Exact Framework",
+          body: "The same four-stage system that built Ariel's business, applied line by line to choosing a partner — not theory, the actual method.",
+        },
+        {
+          icon: "MessageCircle",
+          title: "Live, Unscripted Q&A",
+          body: "Bring the situation you've been sitting on. Ariel answers it live, in the room, with everyone watching how she thinks it through.",
+        },
+        {
+          icon: "Users",
+          title: "A Room of Peers",
+          body: "Ambitious women who've stopped waiting to be chosen. You'll recognize yourself in the questions before you even ask one.",
+        },
+      ],
+    },
+    speaker: {
+      eyebrow: "Your Host",
+      headline: "Ariel Yankelewitz",
+      headlineAccent: "Founder, Marry Like a CEO",
+      bio: [
+        "Thirty years building a business from the ground up — five schools nationwide, a national safety movement, work with Fortune 500 companies, coverage in 40+ national outlets.",
+        "Then her first marriage ended. She spent three years rebuilding before she did the only thing she knew how to do: apply the systems that built her business to finding a partner. She found her second husband, Shmuel. Now she teaches the method, live, once a month.",
+      ],
+      quote:
+        "I didn\u2019t find my husband. I designed the conditions to meet him.",
+      imageAlt: "Ariel Yankelewitz, founder of Marry Like a CEO",
+    },
+    testimonials: {
+      eyebrow: "From The Room",
+      headline: "What past Experiences sound like.",
+      note: "Reflections from women who've attended Ariel's live monthly Experience.",
+      items: [
+        {
+          quote:
+            "I've sat through a lot of dating advice. This was the first time someone gave me a framework instead of a feeling. I left with an actual plan.",
+          name: "Danielle R.",
+          role: "Attorney, New York",
+        },
+        {
+          quote:
+            "Ariel didn\u2019t tell me what was wrong with me. She showed me what was missing from my strategy. Completely different experience.",
+          name: "Priya M.",
+          role: "Founder, Austin",
+        },
+        {
+          quote:
+            "Ninety minutes and I finally understood why my \u2018type\u2019 kept failing me. Worth clearing my calendar for.",
+          name: "Sarah K.",
+          role: "VP Marketing, Chicago",
+        },
+      ],
+    },
+    faq: {
+      eyebrow: "Questions",
+      headline: "Before you reserve your seat.",
+    },
+    finalCta: {
+      eyebrow: "September 27, 2026 — 6:00 PM ET",
+      headline: "Your standards aren\u2019t too high.",
+      headlineAccent: "Your strategy is too vague.",
+      subhead: "One live Experience to fix that. Free. Ninety minutes. Yours.",
+      cta: "Reserve My Seat",
+      micro: "No spam. Unsubscribe anytime.",
+      hashtag: "#IChooseHim",
+    },
   },
   footer: {
     tagline: "A Roadmap to Marriage for Ambitious Women",

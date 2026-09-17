@@ -81,6 +81,97 @@ img {
 }
 
 /* ─────────────────────────────────────────────────────────────
+ *  SEPT 27 EVENT LANDING PAGE — cinematic black & gold palette
+ *  Scoped under its own variable namespace so it never touches
+ *  the site-wide --gold/--bg-dark theme used everywhere else.
+ * ───────────────────────────────────────────────────────────── */
+:root {
+  --sept27-bg: #050505;
+  --sept27-surface: #111111;
+  --sept27-gold: #f4b400;
+  --sept27-white: #ffffff;
+  --sept27-gray: #a1a1aa;
+}
+
+/* Slow, cinematic glow pulse used behind the hero + invitation card */
+@keyframes sept27-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+.sept27-glow {
+  animation: sept27-glow-pulse 7s ease-in-out infinite;
+}
+
+/* Rotating gold-aura ring for the invitation card — same technique as the
+ * Luma event card aura above, re-scoped to the brighter campaign gold. */
+@keyframes sept27-aura-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sept27-card-aura {
+  position: relative;
+  isolation: isolate;
+}
+
+.sept27-card-aura::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent 0deg,
+    var(--sept27-gold) 60deg,
+    color-mix(in srgb, var(--sept27-gold) 60%, white) 100deg,
+    var(--sept27-gold) 140deg,
+    transparent 220deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.9;
+  animation: sept27-aura-spin 6s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Fine film-grain texture for the hero — very low opacity, purely atmospheric */
+.sept27-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.05;
+}
+
+.sept27-hairline-gold {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--sept27-gold) 0%,
+    color-mix(in srgb, var(--sept27-gold) 20%, transparent) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sept27-glow,
+  .sept27-card-aura::before {
+    animation: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
  *  EVENT CARD — gold aura (Luma card redesign)
  *  A thin conic-gradient ring traces the card edge and rotates.
  *  Desktop: appears on hover/keyboard focus.

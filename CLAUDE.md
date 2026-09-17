@@ -114,3 +114,7 @@ Optional: RESEND_API_KEY, NEXT_PUBLIC_SENTRY_DSN
 
 5 checks: preflight, lint, typecheck, unit, e2e-preview.
 Vercel preview per branch. Branch protection on main.
+
+## luma
+all new effects is not yet pushed to the production, 
+so how can i code to it 

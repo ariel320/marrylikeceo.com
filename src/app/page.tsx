@@ -9,11 +9,13 @@ import { Community } from "@/components/sections/Community";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { FAQSchema } from "@/components/SEO/FAQSchema";
+import { UpcomingEventBanner } from "@/components/home/UpcomingEventBanner";
 
 const HomePage = () => {
   return (
     <>
       <FAQSchema />
+      <UpcomingEventBanner />
       <Hero />
       <StrategyGap />
       <TheSystem />

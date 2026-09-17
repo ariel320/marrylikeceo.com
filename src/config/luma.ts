@@ -42,7 +42,7 @@ export const LUMA = {
   embedHost: "https://lu.ma",
 
   /** Public calendar page — used as the accessibility fallback link. */
-  calendarUrl: "https://luma.com/marrylikeceo?e=evt-ZguSCFI6qH7se34",
+  calendarUrl: "https://luma.com/marrylikeceo",
 
   /** Embed frame height per breakpoint, in px. */
   height: {

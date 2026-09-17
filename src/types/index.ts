@@ -1,7 +1,7 @@
 export interface SubscribePayload {
   readonly email: string;
   readonly firstName?: string;
-  readonly source: "hero" | "experience" | "book" | "final";
+  readonly source: "hero" | "experience" | "book" | "final" | "event";
 }
 
 export interface ApiResponse {

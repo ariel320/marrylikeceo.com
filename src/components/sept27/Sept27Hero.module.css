@@ -1,0 +1,354 @@
+/* ─────────────────────────────────────────────────────────────
+ *  SEPT 27 HERO — scoped, dependency-free layout.
+ *
+ *  Written as plain CSS on purpose. The hero previously relied on
+ *  Tailwind's spacing scale (p-*, m-*, max-w-*, text-*), which is
+ *  currently not resolving in this build, so every padding and
+ *  margin collapsed and the copy stacked on itself. Real CSS here
+ *  means the hero renders correctly regardless of the utility
+ *  pipeline.
+ * ───────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--sept27-bg);
+  color: #fff;
+  min-height: 640px;
+  display: flex;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 780px;
+  }
+}
+
+/* ── Background ─────────────────────────────────────────────── */
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* The source photo is a tall portrait and the subject sits slightly left of
+   centre. Rather than zooming in hard with object-position (which cropped her
+   head off), the photo layer itself is inset from the left on desktop and its
+   left edge is feathered into the background. That lands her right of centre
+   at full resolution, clear of the copy column. */
+.photo {
+  position: absolute;
+  inset: 0;
+}
+
+.photo :global(img) {
+  object-fit: cover;
+  object-position: 48% 20%; /* was 48% 30% — pulls more of the top of the photo into frame */
+}
+
+@media (min-width: 768px) {
+  .photo {
+    left: 22%;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 10%,
+      #000 26%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 10%,
+      #000 26%
+    );
+  }
+
+  .photo :global(img) {
+    object-position: 32% 55%; /* was 32% 95% — subject moves up toward the top bar */
+  }
+}
+
+.scrimHorizontal {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    95deg,
+    var(--sept27-bg) 0%,
+    var(--sept27-bg) 26%,
+    color-mix(in srgb, var(--sept27-bg) 72%, transparent) 42%,
+    color-mix(in srgb, var(--sept27-bg) 24%, transparent) 60%,
+    transparent 76%
+  );
+}
+
+@media (max-width: 767px) {
+  .scrimHorizontal {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--sept27-bg) 55%, transparent) 0%,
+      color-mix(in srgb, var(--sept27-bg) 80%, transparent) 45%,
+      var(--sept27-bg) 100%
+    );
+  }
+}
+
+.scrimVertical {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    var(--sept27-bg) 0%,
+    transparent 22%,
+    transparent 48%,
+    color-mix(in srgb, var(--sept27-bg) 78%, transparent) 86%,
+    var(--sept27-bg) 100%
+  );
+}
+
+/* ── Shell ──────────────────────────────────────────────────── */
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 7rem 1.5rem 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 8rem 2.5rem 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    padding: 9rem 4rem 4.5rem;
+    gap: 4rem;
+  }
+}
+
+.copy {
+  max-width: 41rem;
+  min-width: 0;
+}
+
+/* ── Headline ───────────────────────────────────────────────── */
+
+.headline {
+  margin: 1.75rem 0 0;
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+
+.headlineFirst {
+  margin-top: 0;
+}
+
+.headlineLead {
+  display: block;
+  font-size: 0.42em;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 1rem;
+}
+
+.headlineAccent {
+  display: block;
+  color: var(--sept27-gold);
+  font-style: italic;
+}
+
+.subhead {
+  margin: 1.75rem 0 0;
+  max-width: 34rem;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--sept27-gray);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 0.625rem 1.5rem;
+  border: 1px solid var(--sept27-gold);
+  border-radius: 999px;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sept27-gold);
+}
+
+/* ── Action row ─────────────────────────────────────────────── */
+
+.actions {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.75rem;
+  }
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  flex: none;
+  padding: 1.0625rem 2.5rem;
+  border-radius: 999px;
+  background: var(--sept27-gold);
+  color: #000;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition:
+    transform 0.3s var(--ease-luxe),
+    box-shadow 0.3s var(--ease-luxe);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px -12px
+    color-mix(in srgb, var(--sept27-gold) 60%, transparent);
+}
+
+.ctaArrow {
+  transition: transform 0.3s var(--ease-luxe);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.metaItem {
+  min-width: 0;
+}
+
+.metaItem + .metaItem {
+  margin-left: 2rem;
+  padding-left: 2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.metaLabel {
+  margin: 0;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sept27-gold);
+}
+
+.metaValue {
+  margin: 0.4375rem 0 0;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.micro {
+  margin: 1.5rem 0 0;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.75rem;
+  color: var(--sept27-gray);
+}
+
+/* ── Poster card ────────────────────────────────────────────── */
+
+.poster {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .poster {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    justify-self: end;
+    width: 15rem;
+    padding: 1.75rem 1.5rem;
+    border: 1px solid color-mix(in srgb, var(--sept27-gold) 45%, transparent);
+    background: rgba(0, 0, 0, 0.62);
+    backdrop-filter: blur(6px);
+  }
+}
+
+.posterEyebrow {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sept27-gold);
+}
+
+.posterHeadline {
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.posterMeta {
+  margin-top: 0.5rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  width: 100%;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: var(--sept27-gray);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .ctaArrow {
+    transition: none;
+  }
+}

@@ -1,0 +1,80 @@
+/* Persistent floating reserve-seat bar. No dismiss control by design —
+ * it should stay available the whole time someone is scrolling the page. */
+
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  padding: 0.875rem 1.25rem calc(0.875rem + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, var(--sept27-bg) 88%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--sept27-gold) 30%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  max-width: 640px;
+}
+
+.copy {
+  display: none;
+  min-width: 0;
+}
+
+@media (min-width: 480px) {
+  .copy {
+    display: block;
+  }
+}
+
+.label {
+  margin: 0;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sept27-gold);
+  white-space: nowrap;
+}
+
+.sub {
+  margin: 0.125rem 0 0;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.75rem;
+  color: var(--sept27-gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cta {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8125rem 1.75rem;
+  border-radius: 999px;
+  background: var(--sept27-gold);
+  color: #000;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.3s var(--ease-luxe);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+}
