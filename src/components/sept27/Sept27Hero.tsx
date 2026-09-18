@@ -95,12 +95,17 @@ export const Sept27Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
               >
-                <span className={styles.badge}>
+                <a
+                  href={SEPT27_EVENT.lumaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.badge}
+                >
                   {hero.freeBadge}
                   <span className={styles.ctaArrow} aria-hidden="true">
                     &rarr;
                   </span>
-                </span>
+                </a>
               </motion.div>
             </div>
           </motion.div>
@@ -113,7 +118,17 @@ export const Sept27Hero = () => {
           </motion.h1>
 
           <motion.div {...fadeUp(0.12)} className={styles.badgeRow}>
-            <span className={styles.badge}>{hero.freeBadge}</span>
+            <a
+              href={SEPT27_EVENT.lumaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.badge}
+            >
+              {hero.freeBadge}
+              <span className={styles.ctaArrow} aria-hidden="true">
+                &rarr;
+              </span>
+            </a>
           </motion.div>
 
           <motion.p {...fadeUp(0.24)} className={styles.subhead}>

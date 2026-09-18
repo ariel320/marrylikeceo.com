@@ -233,6 +233,7 @@
 
   .subhead {
     order: 2;
+    margin-top: 0.875rem;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -345,6 +346,17 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--sept27-gold);
+  text-decoration: none;
+  cursor: pointer;
+  gap: 0.5rem;
+  transition:
+    background-color 0.3s var(--ease-luxe),
+    color 0.3s var(--ease-luxe);
+}
+
+.badge:hover {
+  background: var(--sept27-gold);
+  color: #000;
 }
 
 /* ── Action row ─────────────────────────────────────────────── */

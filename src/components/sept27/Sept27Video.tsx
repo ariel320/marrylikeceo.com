@@ -33,7 +33,16 @@ export const Sept27Video = () => {
       <motion.div {...fadeUp(0)} className={styles.wrap}>
         <div className={`sept27-card-aura ${styles.frame}`}>
           <div className={styles.player}>
-            <video key={VIDEO_SRC} controls poster={POSTER_SRC} preload="metadata">
+            <video
+              key={VIDEO_SRC}
+              controls
+              autoPlay
+              muted
+              playsInline
+              loop
+              poster={POSTER_SRC}
+              preload="auto"
+            >
               <source src={VIDEO_SRC} type="video/mp4" />
             </video>
           </div>
