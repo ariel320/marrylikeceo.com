@@ -53,7 +53,7 @@ export const EVENTS: readonly EventItem[] = [
   {
     id: "the-dating-code",
     dateISO: "2026-09-28",
-    time: "12:00 AM",
+    time: "12:00 PM",
     title: "THE DATING CODE: Change the way you date - change your life (Free Live Event)",
     host: "Ariel Yankelewitz",
     location: "Zoom",

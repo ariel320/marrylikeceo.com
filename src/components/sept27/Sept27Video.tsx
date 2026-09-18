@@ -25,7 +25,7 @@ const fadeUp = (delay: number) => ({
  * ─────────────────────────────────────────────────────────────
  */
 const VIDEO_SRC = "/images/sample.mov";
-const POSTER_SRC = "";
+const POSTER_SRC = "/images/ariel-hero.jpg";
 
 export const Sept27Video = () => {
   return (

@@ -10,10 +10,10 @@
 
 export const SEPT27_EVENT = {
   /** ISO datetime with timezone offset — the countdown target. */
-  dateISO: "2026-09-27T18:00:00-04:00",
+  dateISO: "2026-09-27T12:00:00-04:00",
   dateDisplay: "September 27, 2026",
   dayOfWeek: "Sunday",
-  timeDisplay: "6:00 PM ET",
+  timeDisplay: "12:00 PM ET",
   format: "Live Virtual Experience",
   seatNote: "Limited seats on the live broadcast.",
   /** Direct link to this Experience's registration page on Luma. */

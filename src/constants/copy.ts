@@ -235,7 +235,7 @@ export const COPY = {
       headline: "The September 27th Experience",
       dateLabel: "September 27, 2026",
       dayLabel: "Sunday",
-      timeLabel: "6:00 PM ET",
+      timeLabel: "12:00 PM ET",
       formatLabel: "Live Virtual — Link Sent After Registration",
       body: "Ninety minutes with Ariel. The strategy, the standards, the exact sequence — taught the way she'd teach it to a friend she respected too much to waste her time.",
       cta: "Reserve on Luma",
