@@ -19,5 +19,5 @@ export const SEPT27_EVENT = {
   /** Direct link to this Experience's registration page on Luma. */
   lumaUrl: "https://luma.com/l2bbgm0b?lm_source=embed",
   /** This event has ended — CTAs send visitors to the next Experience instead. */
-  nextEventHref: "/october-27",
+  nextEventHref: "/free-live-event",
 } as const;

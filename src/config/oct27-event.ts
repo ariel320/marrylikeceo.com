@@ -3,7 +3,7 @@
  *  OCT 27 EXPERIENCE — SINGLE SOURCE OF TRUTH
  * ─────────────────────────────────────────────────────────────
  *
- *  The /october-27 landing page (hero, invitation card, countdown) all read from here. Change the event
+ *  The /free-live-event landing page (hero, invitation card, countdown) all read from here. Change the event
  *  date/time/links only in this file.
  */
 

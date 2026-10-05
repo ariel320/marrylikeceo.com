@@ -28,7 +28,7 @@ export interface EventItem {
   /** Link to the specific event page on Luma. */
   readonly lumaUrl: string;
   /**
-   * Internal landing page for this event (e.g. "/october-27"), used by the
+   * Internal landing page for this event (e.g. "/free-live-event"), used by the
    * homepage's upcoming-event banner as the "click through" destination.
    * Falls back to `lumaUrl` when omitted.
    */
@@ -59,7 +59,7 @@ export const EVENTS: readonly EventItem[] = [
     location: "Zoom",
     mode: "Online",
     lumaUrl: "https://luma.com/zaqwa2gr",
-    detailsHref: "/october-27",
+    detailsHref: "/free-live-event",
     image: {
       // Placeholder: the previous poster. Overwrite this file with the new poster (same name) to update.
       src: "/images/events/how-to-date-like-a-pro-poster.png",
