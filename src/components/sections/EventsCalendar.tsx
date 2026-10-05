@@ -4,8 +4,10 @@ import { motion } from "motion/react";
 
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { EventsList } from "@/components/events/EventsList";
+import { Button } from "@/components/ui/Button";
+import { LumaEmbed } from "@/components/events/LumaEmbed";
 import { COPY } from "@/constants/copy";
+import { EVENTS } from "@/config/events";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -46,8 +48,17 @@ export const EventsCalendar = () => {
         </motion.p>
 
         <motion.div {...fadeUp(0.22)} className="mt-12 lg:mt-16">
-          {/* Upcoming Experiences — data lives in src/config/events.ts */}
-          <EventsList />
+          {/* Luma event embed — URL lives in src/config/luma.ts (embedUrlOverride) */}
+          <LumaEmbed />
+
+          {/* Keeps the Oct 27 landing page discoverable (link comes from src/config/events.ts) */}
+          {EVENTS[0]?.detailsHref && (
+            <div className="mt-10 flex justify-center">
+              <Button variant="secondary" href={EVENTS[0].detailsHref}>
+                {events.cardSeeMore}
+              </Button>
+            </div>
+          )}
         </motion.div>
       </div>
     </Section>

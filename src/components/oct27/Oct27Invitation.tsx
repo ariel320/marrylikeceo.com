@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "motion/react";
 
-import { Sept27Section } from "@/components/sept27/Sept27Section";
+import { Oct27Section } from "@/components/oct27/Oct27Section";
 import { COPY } from "@/constants/copy";
-import { SEPT27_EVENT } from "@/config/sept27-event";
+import { OCT27_EVENT } from "@/config/oct27-event";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -22,11 +21,11 @@ const fadeUp = (delay: number) => ({
  * headline, date, and a single CTA, all inside one self-contained gold
  * frame — so a screenshot of just the card works on its own.
  */
-export const Sept27Invitation = () => {
-  const { invitation } = COPY.sept27;
+export const Oct27Invitation = () => {
+  const { invitation } = COPY.oct27;
 
   return (
-    <Sept27Section id="sept27-invitation" theme="bg" className="overflow-hidden">
+    <Oct27Section id="oct27-invitation" theme="bg" className="overflow-hidden">
       <motion.div {...fadeUp(0)} className="mx-auto flex items-center justify-center gap-4">
         <span className="sept27-hairline-gold w-10 flex-none" aria-hidden="true" />
         <p className="font-[family-name:var(--font-dm-sans)] text-[11px] font-medium uppercase tracking-[0.3em] text-[var(--sept27-gold)]">
@@ -49,7 +48,7 @@ export const Sept27Invitation = () => {
         <div className="flex flex-col items-center gap-8 px-8 py-14 text-center md:px-14 md:py-16">
           <div className="relative h-[170px] w-[136px] flex-none overflow-hidden rounded-[10px] ring-1 ring-[var(--sept27-gold)]/40 shadow-[0_25px_60px_-20px_rgba(244,180,0,0.35)] sm:h-[192px] sm:w-[154px]">
             <Image
-              src="/images/events/the-dating-code-poster.png"
+              src="/images/events/how-to-date-like-a-pro-poster.png"
               alt="Marry Like a CEO — The Dating Code, a free live Experience with Ariel Yankelewitz"
               fill
               sizes="160px"
@@ -100,7 +99,7 @@ export const Sept27Invitation = () => {
                 Format
               </dt>
               <dd className="mt-1 font-[family-name:var(--font-dm-sans)] text-sm font-medium text-white">
-                {SEPT27_EVENT.format}
+                {OCT27_EVENT.format}
               </dd>
             </div>
           </dl>
@@ -110,21 +109,23 @@ export const Sept27Invitation = () => {
           </p>
 
           <div className="flex w-full max-w-[380px] flex-col items-center gap-4">
-            <Link
- href={SEPT27_EVENT.nextEventHref}
- className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--sept27-gold)] px-10 py-4 font-[family-name:var(--font-dm-sans)] text-sm font-medium tracking-wide text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_20px_50px_-12px_color-mix(in_srgb,var(--sept27-gold)_65%,transparent)]"
+            <a
+              href={OCT27_EVENT.lumaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--sept27-gold)] px-10 py-4 font-[family-name:var(--font-dm-sans)] text-sm font-medium tracking-wide text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_20px_50px_-12px_color-mix(in_srgb,var(--sept27-gold)_65%,transparent)]"
             >
               {invitation.cta}
               <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
                 &rarr;
               </span>
-            </Link>
+            </a>
             <p className="font-[family-name:var(--font-dm-sans)] text-xs text-[var(--sept27-gray)]">
               {invitation.micro}
             </p>
           </div>
         </div>
       </motion.div>
-    </Sept27Section>
+    </Oct27Section>
   );
 };

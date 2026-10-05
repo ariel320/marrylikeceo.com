@@ -33,7 +33,7 @@
 
 export const LUMA = {
   /** Paste Luma's own iframe `src` here — takes precedence over everything below. */
-  embedUrlOverride: "",
+  embedUrlOverride: "https://luma.com/embed/event/evt-g73J8A5cXAEXobj/simple",
 
   /** Calendar ID from Luma → Settings → Embed. Starts with `cal-`. */
   calendarId: "cal-YKBmx3PQLg2lBFr",
@@ -42,13 +42,13 @@ export const LUMA = {
   embedHost: "https://lu.ma",
 
   /** Public calendar page — used as the accessibility fallback link. */
-  calendarUrl: "https://luma.com/marrylikeceo?e=evt-ZguSCFI6qH7se34",
+  calendarUrl: "https://luma.com/zaqwa2gr",
 
-  /** Embed frame height per breakpoint, in px. */
+  /** Embed frame height per breakpoint (any CSS length). */
   height: {
-    mobile: 640,
-    tablet: 760,
-    desktop: 860,
+    mobile: "calc(100vw + 400px)", // poster scales with width; trimmed so the Register button is the last thing visible
+    tablet: "450px",
+    desktop: "450px",
   },
 } as const;
 

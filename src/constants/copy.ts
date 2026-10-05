@@ -211,35 +211,155 @@ export const COPY = {
     hashtag: "#IChooseHim",
     imageAlt: "Ariel Yankelewitz glancing back over her shoulder, black and white",
   },
-  sept27: {
+  oct27: {
     meta: {
-      title: "The September 27th Experience — Marry Like a CEO",
+      title: "How to Date Like a Pro — Marry Like a CEO",
       description:
-        "One live virtual Experience with Ariel Yankelewitz. The exact framework she used to choose her second husband — live, September 27, 2026. Free to attend.",
+        "A free live event with Ariel Yankelewitz for ambitious women ready for marriage and lasting love. Date with intention, clarity, and confidence — live, October 27, 2026.",
     },
     hero: {
-      eyebrow: "One Night. One Room. One Decision.",
+      eyebrow: "Free Live Event",
+      headline: "HOW TO DATE",
+      headlineAccent: "Like a Pro.",
+      subhead:
+        "Dating shouldn\u2019t feel like a guessing game. A free live event with Ariel Yankelewitz for ambitious women ready for marriage and lasting love.",
+      freeBadge: "Free Live Event",
+      cta: "Reserve Your Seat",
+      ctaMicro: "Free to attend. Register on Luma to get your link.",
+      imageAlt: "Ariel Yankelewitz",
+      posterEyebrow: "Ariel Yankelewitz",
+      posterHeadline: "How to Date Like a Pro",
+    },
+    invitation: {
+      eyebrow: "You're Invited",
+      headline: "How to Date Like a Pro",
+      dateLabel: "October 27, 2026",
+      dayLabel: "Tuesday",
+      timeLabel: "7:00 PM ET",
+      formatLabel: "Live Virtual — Link Sent After Registration",
+      body: "Stop repeating the same dating patterns and start dating with intention, clarity, and confidence — and make wiser choices about the person you build your future with.",
+      cta: "Reserve on Luma",
+      micro: "Registration happens on Luma — you'll get the link there.",
+    },
+    countdown: {
+      eyebrow: "Doors Close In",
+      headline: "The clock is the strategy.",
+      subhead:
+        "You've run deadlines your whole career. This one gets you to the room.",
+      labels: {
+        days: "Days",
+        hours: "Hours",
+        minutes: "Minutes",
+        seconds: "Seconds",
+      },
+      liveHeadline: "We're live right now.",
+      liveBody: "The room is open. Reserve your seat to get the link.",
+      pastHeadline: "This Experience has closed.",
+      pastBody:
+        "Join the calendar to catch the next live Experience with Ariel.",
+    },
+    whyAttend: {
+      eyebrow: "What You'll Learn",
+      headline: "Stop dating on autopilot.",
+      headlineAccent: "Start dating like a pro.",
+      cards: [
+        {
+          icon: "Target",
+          title: "Date With Intention",
+          body: "Replace uncertainty with direction — and leave with an action plan to move toward the relationship and future you truly want.",
+        },
+        {
+          icon: "MessageCircle",
+          title: "Recognize Your Patterns",
+          body: "See the patterns quietly influencing your choices, so you stop repeating them and start choosing more wisely.",
+        },
+        {
+          icon: "Users",
+          title: "Practical Tools",
+          body: "Real tools you can use in your dating life right away — no more wondering where you're going, no more guessing.",
+        },
+      ],
+    },
+    speaker: {
+      eyebrow: "Your Host",
+      headline: "Ariel Yankelewitz",
+      headlineAccent: "Founder, Marry Like a CEO",
+      bio: [
+        "Thirty years building a business from the ground up — five schools nationwide, a national safety movement, work with Fortune 500 companies, coverage in 40+ national outlets.",
+        "Then came a painful divorce, and a realization: the same strategies and patterns she used to make successful decisions in business could be applied to choosing a life partner. She remarried, and now shares what she learned with women ready to create a different future in love.",
+      ],
+      quote:
+        "I didn\u2019t find my husband. I designed the conditions to meet him.",
+      imageAlt: "Ariel Yankelewitz, founder of Marry Like a CEO",
+    },
+    testimonials: {
+      eyebrow: "From The Room",
+      headline: "What past Experiences sound like.",
+      note: "Reflections from women who've attended Ariel's live monthly Experience.",
+      items: [
+        {
+          quote:
+            "I've sat through a lot of dating advice. This was the first time someone gave me a framework instead of a feeling. I left with an actual plan.",
+          name: "Danielle R.",
+          role: "Attorney, New York",
+        },
+        {
+          quote:
+            "Ariel didn\u2019t tell me what was wrong with me. She showed me what was missing from my strategy. Completely different experience.",
+          name: "Priya M.",
+          role: "Founder, Austin",
+        },
+        {
+          quote:
+            "Ninety minutes and I finally understood why my \u2018type\u2019 kept failing me. Worth clearing my calendar for.",
+          name: "Sarah K.",
+          role: "VP Marketing, Chicago",
+        },
+      ],
+    },
+    faq: {
+      eyebrow: "Questions",
+      headline: "Before you reserve your seat.",
+    },
+    finalCta: {
+      eyebrow: "October 27, 2026 — 7:00 PM ET",
+      headline: "Your standards aren\u2019t too high.",
+      headlineAccent: "Your strategy is too vague.",
+      subhead: "One free live event to fix that. Start dating like a pro.",
+      cta: "Reserve My Seat",
+      micro: "No spam. Unsubscribe anytime.",
+      hashtag: "#IChooseHim",
+    },
+  },
+  sept27: {
+    meta: {
+      title: "The September 27th Experience (Past Event) — Marry Like a CEO",
+      description:
+        "One live virtual Experience with Ariel Yankelewitz. The exact framework she used to choose her second husband — held live on September 27, 2026. This event has ended — see what's next.",
+    },
+    hero: {
+      eyebrow: "Past Experience",
       headline: "THE DATING CODE:",
       headlineAccent: "Change the way you date — change your life.",
       subhead:
         "A live virtual Experience with Ariel Yankelewitz — the exact framework she used to choose her second husband, walked through in one sitting.",
-      freeBadge: "Free Live Event",
-      cta: "Reserve Your Seat",
-      ctaMicro: "Free to attend. Seats are limited on the live broadcast.",
+      freeBadge: "This Event Has Ended",
+      cta: "Join the Next Experience",
+      ctaMicro: "Next up: How to Date Like a Pro — October 27, 2026. Free to attend.",
       imageAlt: "Ariel Yankelewitz",
       posterEyebrow: "Ariel Yankelewitz",
       posterHeadline: "The Dating Code",
     },
     invitation: {
-      eyebrow: "You're Invited",
+      eyebrow: "Past Experience",
       headline: "The September 27th Experience",
       dateLabel: "September 27, 2026",
       dayLabel: "Sunday",
       timeLabel: "12:00 PM ET",
       formatLabel: "Live Virtual — Link Sent After Registration",
       body: "Ninety minutes with Ariel. The strategy, the standards, the exact sequence — taught the way she'd teach it to a friend she respected too much to waste her time.",
-      cta: "Reserve on Luma",
-      micro: "Registration happens on Luma — you'll get the link there.",
+      cta: "Join the Next Experience",
+      micro: "How to Date Like a Pro — October 27, 2026.",
     },
     countdown: {
       eyebrow: "Doors Close In",
@@ -322,11 +442,11 @@ export const COPY = {
       headline: "Before you reserve your seat.",
     },
     finalCta: {
-      eyebrow: "September 27, 2026 — 6:00 PM ET",
+      eyebrow: "Past Experience — September 27, 2026",
       headline: "Your standards aren\u2019t too high.",
       headlineAccent: "Your strategy is too vague.",
-      subhead: "One live Experience to fix that. Free. Ninety minutes. Yours.",
-      cta: "Reserve My Seat",
+      subhead: "Join the list and be first to know about the next live Experience.",
+      cta: "Notify Me",
       micro: "No spam. Unsubscribe anytime.",
       hashtag: "#IChooseHim",
     },

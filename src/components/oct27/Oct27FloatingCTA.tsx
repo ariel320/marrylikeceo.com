@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-import Link from "next/link";
 import { COPY } from "@/constants/copy";
-import { SEPT27_EVENT } from "@/config/sept27-event";
+import { OCT27_EVENT } from "@/config/oct27-event";
 
-import styles from "./Sept27FloatingCTA.module.css";
+import styles from "./Oct27FloatingCTA.module.css";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -17,12 +16,12 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  * Intentionally has no close/dismiss control — it's meant to stay
  * available the whole time someone is reading the page.
  */
-export const Sept27FloatingCTA = () => {
-  const { hero } = COPY.sept27;
+export const Oct27FloatingCTA = () => {
+  const { hero } = COPY.oct27;
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const heroEl = document.getElementById("sept27-hero");
+    const heroEl = document.getElementById("oct27-hero");
     if (!heroEl) {
       setVisible(true);
       return;
@@ -53,16 +52,18 @@ export const Sept27FloatingCTA = () => {
             <div className={styles.copy}>
               <p className={styles.label}>{hero.freeBadge}</p>
               <p className={styles.sub}>
-                {SEPT27_EVENT.dateDisplay} &middot; {SEPT27_EVENT.timeDisplay}
+                {OCT27_EVENT.dateDisplay} &middot; {OCT27_EVENT.timeDisplay}
               </p>
             </div>
-            <Link
- href={SEPT27_EVENT.nextEventHref}
- className={styles.cta}
+            <a
+              href={OCT27_EVENT.lumaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cta}
             >
               {hero.cta}
               <span aria-hidden="true">&rarr;</span>
-            </Link>
+            </a>
           </div>
         </motion.div>
       ) : null}

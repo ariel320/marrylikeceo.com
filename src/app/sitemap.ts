@@ -15,7 +15,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
       priority: 0.8,
     },
     {
-      url: "https://marrylikeceo.com/sept-27",
+      url: "https://marrylikeceo.com/october-27",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,

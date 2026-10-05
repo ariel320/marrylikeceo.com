@@ -41,7 +41,7 @@ export const LumaEmbed = () => {
       <Frame>
         <div
           className="flex flex-col items-center justify-center gap-6 rounded-[2px] px-6 py-20 text-center"
-          style={{ minHeight: LUMA.height.mobile }}
+          style={{ minHeight: 640 }}
         >
           <span className="hairline-gold w-16" aria-hidden="true" />
           <p className="max-w-[440px] font-[family-name:var(--font-cormorant-garamond)] text-[22px] font-light italic text-[var(--text-light)]">
@@ -65,11 +65,12 @@ export const LumaEmbed = () => {
 
   return (
     <div
+      className="mx-auto w-full max-w-[640px] lg:max-w-[760px]"
       style={
         {
-          "--luma-h-mobile": `${LUMA.height.mobile}px`,
-          "--luma-h-tablet": `${LUMA.height.tablet}px`,
-          "--luma-h-desktop": `${LUMA.height.desktop}px`,
+          "--luma-h-mobile": LUMA.height.mobile,
+          "--luma-h-tablet": LUMA.height.tablet,
+          "--luma-h-desktop": LUMA.height.desktop,
         } as React.CSSProperties
       }
     >

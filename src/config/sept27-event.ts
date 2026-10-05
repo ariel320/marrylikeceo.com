@@ -18,4 +18,6 @@ export const SEPT27_EVENT = {
   seatNote: "Limited seats on the live broadcast.",
   /** Direct link to this Experience's registration page on Luma. */
   lumaUrl: "https://luma.com/l2bbgm0b?lm_source=embed",
+  /** This event has ended — CTAs send visitors to the next Experience instead. */
+  nextEventHref: "/october-27",
 } as const;

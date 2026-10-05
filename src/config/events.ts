@@ -28,7 +28,7 @@ export interface EventItem {
   /** Link to the specific event page on Luma. */
   readonly lumaUrl: string;
   /**
-   * Internal landing page for this event (e.g. "/sept-27"), used by the
+   * Internal landing page for this event (e.g. "/october-27"), used by the
    * homepage's upcoming-event banner as the "click through" destination.
    * Falls back to `lumaUrl` when omitted.
    */
@@ -51,26 +51,23 @@ export interface EventItem {
 
 export const EVENTS: readonly EventItem[] = [
   {
-    id: "the-dating-code",
-    dateISO: "2026-09-28",
-    time: "12:00 PM",
-    title: "THE DATING CODE: Change the way you date - change your life (Free Live Event)",
+    id: "how-to-date-like-a-pro",
+    dateISO: "2026-10-27",
+    time: "7:00 PM",
+    title: "How to Date Like a Pro (Free Live Event)",
     host: "Ariel Yankelewitz",
     location: "Zoom",
     mode: "Online",
-    lumaUrl: "https://luma.com/l2bbgm0b?lm_source=embed",
-    detailsHref: "/sept-27",
+    lumaUrl: "https://luma.com/zaqwa2gr",
+    detailsHref: "/october-27",
     image: {
-      src: "/images/events/the-dating-code-poster.png",
-      alt: "Marry Like a CEO — The Dating Code, a free live Experience with Ariel Yankelewitz",
+      // Placeholder: the previous poster. Overwrite this file with the new poster (same name) to update.
+      src: "/images/events/how-to-date-like-a-pro-poster.png",
+      alt: "Marry Like a CEO — How to Date Like a Pro, a free live event with Ariel Yankelewitz",
     },
     hostAvatar: {
       src: "/images/events/ariel-avatar.jpg",
       alt: "Ariel Yankelewitz",
-    },
-    attendees: {
-      src: "/images/events/dating-code-attendees.png",
-      alt: "A few of the people already registered",
     },
   },
 ];

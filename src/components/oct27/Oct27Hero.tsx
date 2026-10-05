@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
 
 import { DuotoneImage } from "@/components/ui/DuotoneImage";
-import { LocalEventTime } from "@/components/sept27/LocalEventTime";
+import { LocalEventTime } from "@/components/oct27/LocalEventTime";
 import { COPY } from "@/constants/copy";
-import { SEPT27_EVENT } from "@/config/sept27-event";
+import { OCT27_EVENT } from "@/config/oct27-event";
 
-import styles from "./Sept27Hero.module.css";
+import styles from "./Oct27Hero.module.css";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -21,22 +20,22 @@ const fadeUp = (delay: number) => ({
 /**
  * Full-bleed banner hero for the Sept 27 Experience.
  *
- * Layout lives in Sept27Hero.module.css rather than utility classes: the
+ * Layout lives in Oct27Hero.module.css rather than utility classes: the
  * spacing-scale utilities are not resolving in this build, which collapsed
  * every padding and margin and stacked the copy on itself. Scoped CSS keeps
  * the hero correct independently of that.
  */
-export const Sept27Hero = () => {
-  const { hero } = COPY.sept27;
+export const Oct27Hero = () => {
+  const { hero } = COPY.oct27;
 
-  const details = [{ label: "Date", value: SEPT27_EVENT.dateDisplay }];
-  // SEPT27_EVENT.timeDisplay already ends in "ET" (e.g. "12:00 PM ET").
+  const details = [{ label: "Date", value: OCT27_EVENT.dateDisplay }];
+  // OCT27_EVENT.timeDisplay already ends in "ET" (e.g. "12:00 PM ET").
   // LocalEventTime appends the full word "Eastern Time" itself, so strip
   // the abbreviation here to avoid "(12:00 PM ET Eastern Time)".
-  const easternTimeLabel = SEPT27_EVENT.timeDisplay.replace(/\s*ET$/i, "");
+  const easternTimeLabel = OCT27_EVENT.timeDisplay.replace(/\s*ET$/i, "");
 
   return (
-    <section id="sept27-hero" className={styles.hero}>
+    <section id="oct27-hero" className={styles.hero}>
       <div className={styles.backdrop} aria-hidden="true">
         <motion.div
           initial={{ scale: 1.06, opacity: 0.6 }}
@@ -96,15 +95,17 @@ export const Sept27Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
               >
-                <Link
- href={SEPT27_EVENT.nextEventHref}
- className={styles.badge}
+                <a
+                  href={OCT27_EVENT.lumaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.badge}
                 >
                   {hero.freeBadge}
                   <span className={styles.ctaArrow} aria-hidden="true">
                     &rarr;
                   </span>
-                </Link>
+                </a>
               </motion.div>
             </div>
           </motion.div>
@@ -117,15 +118,17 @@ export const Sept27Hero = () => {
           </motion.h1>
 
           <motion.div {...fadeUp(0.12)} className={styles.badgeRow}>
-            <Link
- href={SEPT27_EVENT.nextEventHref}
- className={styles.badge}
+            <a
+              href={OCT27_EVENT.lumaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.badge}
             >
               {hero.freeBadge}
               <span className={styles.ctaArrow} aria-hidden="true">
                 &rarr;
               </span>
-            </Link>
+            </a>
           </motion.div>
 
           <motion.p {...fadeUp(0.24)} className={styles.subhead}>
@@ -133,15 +136,17 @@ export const Sept27Hero = () => {
           </motion.p>
 
           <motion.div {...fadeUp(0.44)} className={styles.actions}>
-            <Link
- href={SEPT27_EVENT.nextEventHref}
- className={styles.cta}
+            <a
+              href={OCT27_EVENT.lumaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cta}
             >
               {hero.cta}
               <span className={styles.ctaArrow} aria-hidden="true">
                 &rarr;
               </span>
-            </Link>
+            </a>
 
             <dl className={styles.meta}>
               {details.map((detail) => (
@@ -154,9 +159,9 @@ export const Sept27Hero = () => {
                 <dt className={styles.metaLabel}>Time</dt>
                 <dd className={styles.metaValue}>
                   <LocalEventTime
-                    iso={SEPT27_EVENT.dateISO}
+                    iso={OCT27_EVENT.dateISO}
                     fixedLabel={easternTimeLabel}
-                    fallback={SEPT27_EVENT.timeDisplay}
+                    fallback={OCT27_EVENT.timeDisplay}
                     noteClassName={styles.metaNote}
                   />
                 </dd>
@@ -179,9 +184,9 @@ export const Sept27Hero = () => {
             <span className={styles.posterEyebrow}>{hero.posterEyebrow}</span>
             <span className={styles.posterHeadline}>{hero.posterHeadline}</span>
             <span className={styles.posterMeta}>
-              {SEPT27_EVENT.dayOfWeek}, {SEPT27_EVENT.dateDisplay}
+              {OCT27_EVENT.dayOfWeek}, {OCT27_EVENT.dateDisplay}
               <br />
-              {SEPT27_EVENT.timeDisplay}
+              {OCT27_EVENT.timeDisplay}
             </span>
           </div>
         </motion.aside>
