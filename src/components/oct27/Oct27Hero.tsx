@@ -11,9 +11,32 @@ import styles from "./Oct27Hero.module.css";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const Sparkle = ({ className }: { readonly className: string }) => (
-  <svg className={`${styles.sparkle} ${className}`} viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M12 0c.8 7 5 11.2 12 12-7 .8-11.2 5-12 12-.8-7-5-11.2-12-12C7 11.2 11.2 7 12 0Z" />
+/** Hairline, small gold bloom, hairline: the flourish of a wedding invitation. */
+const FlowerDivider = () => (
+  <svg className={styles.divider} viewBox="0 0 240 28" fill="none" aria-hidden="true">
+    <g stroke="var(--sept27-gold)" strokeWidth="1" strokeLinecap="round">
+      <path d="M0 14H92M148 14H240" strokeOpacity="0.6" />
+      <path
+        d="M98 14c5-7 11-7 16 0-5 7-11 7-16 0ZM126 14c5-7 11-7 16 0-5 7-11 7-16 0Z"
+        fill="var(--sept27-gold)"
+        fillOpacity="0.2"
+      />
+      <g transform="translate(120 14)">
+        {[0, 72, 144, 216, 288].map((a) => (
+          <ellipse
+            key={a}
+            cx="0"
+            cy="-5.5"
+            rx="3"
+            ry="5.5"
+            fill="var(--sept27-gold)"
+            fillOpacity="0.22"
+            transform={`rotate(${a})`}
+          />
+        ))}
+        <circle r="1.8" fill="var(--sept27-gold)" stroke="none" />
+      </g>
+    </g>
   </svg>
 );
 
@@ -25,9 +48,9 @@ const LEAVES = [
   { x: 100, y: 60, r: -105, s: 0.7 },
 ] as const;
 
-/** Fine gold line-art sprig with a bloom at the tip. */
-const Botanical = ({ className }: { readonly className: string }) => (
-  <svg className={`${styles.botanical} ${className}`} viewBox="0 0 160 200" fill="none" aria-hidden="true">
+/** Fine gold line-art sprig with a bloom at the tip (wide screens only). */
+const Sprig = () => (
+  <svg className={styles.sprig} viewBox="0 0 160 200" fill="none" aria-hidden="true">
     <g stroke="var(--sept27-gold)" strokeWidth="1.1" strokeLinecap="round">
       <path d="M20 192C40 132 68 84 118 30" />
       {LEAVES.map((l) => (
@@ -59,46 +82,37 @@ const Botanical = ({ className }: { readonly className: string }) => (
 );
 
 /**
- * Invitation hero. Copy block on the left (title, sub between two gold
- * hairlines, details, pill CTA), arch-framed photo on the right with a fine
- * gold frame, plus a few quiet sparkles and edge rails. Plain CSS module.
+ * Wedding-invitation hero. A calm, centered column of type (kicker, two-line
+ * title, flower divider, sub, details, pill CTA) beside a photo that sits on
+ * the right edge and fades into the page. Plain CSS module on purpose.
  */
 export const Oct27Hero = () => {
   const { hero } = COPY.oct27;
   const easternTimeLabel = OCT27_EVENT.timeDisplay.replace(/\s*ET$/i, "");
+  const [firstWord, ...restWords] = hero.headlineTitle.split(" ");
 
   return (
     <section id="oct27-hero" className={styles.hero}>
-      <span className={`${styles.rail} ${styles.railLeft}`} aria-hidden="true" />
-      <span className={`${styles.rail} ${styles.railRight}`} aria-hidden="true" />
-      <Botanical className={styles.botanicalTop} />
-      <Botanical className={styles.botanicalBottom} />
-      <Sparkle className={styles.sparkleA} />
-      <Sparkle className={styles.sparkleB} />
-      <Sparkle className={styles.sparkleC} />
+      <Sprig />
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.4, ease: EASE }}
+        className={styles.photoWrap}
+      >
+        <Image
+          src="/images/A7409435-web.jpg"
+          alt={hero.imageAlt}
+          fill
+          priority
+          quality={90}
+          sizes="(max-width: 899px) 100vw, 56vw"
+          className={styles.photo}
+        />
+      </motion.div>
 
       <div className={styles.inner}>
-        <motion.div
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, ease: EASE }}
-          className={styles.archWrap}
-        >
-          <div className={styles.frame}>
-            <div className={styles.arch}>
-              <Image
-                src="/images/A7409435-web.jpg"
-                alt={hero.imageAlt}
-                fill
-                priority
-                quality={90}
-                sizes="(max-width: 899px) 80vw, 440px"
-                className={styles.photo}
-              />
-            </div>
-          </div>
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,25 +121,30 @@ export const Oct27Hero = () => {
         >
           <p className={styles.kicker}>A free live event with Ariel Yankelewitz</p>
 
-          <h1 className={styles.headline}>{hero.headlineTitle}</h1>
+          <h1 className={styles.headline}>
+            <span className={styles.line}>{firstWord}</span>
+            <span className={styles.line}>{restWords.join(" ")}</span>
+          </h1>
+
+          <FlowerDivider />
 
           <p className={styles.tagline}>{hero.headlineSub}</p>
 
           <p className={styles.subhead}>{hero.subhead}</p>
 
-          <p className={styles.when}>
-            <span>
+          <div className={styles.when}>
+            <p className={styles.date}>
               {OCT27_EVENT.dayOfWeek}, {OCT27_EVENT.dateDisplay}
-            </span>
-            <span className={styles.whenTime}>
+            </p>
+            <p className={styles.time}>
               <LocalEventTime
                 iso={OCT27_EVENT.dateISO}
                 fixedLabel={easternTimeLabel}
                 fallback={OCT27_EVENT.timeDisplay}
-                noteClassName={styles.whenNote}
+                noteClassName={styles.timeNote}
               />
-            </span>
-          </p>
+            </p>
+          </div>
 
           <a
             href={OCT27_EVENT.lumaUrl}

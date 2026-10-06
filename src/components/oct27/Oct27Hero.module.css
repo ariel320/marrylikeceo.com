@@ -1,4 +1,4 @@
-/* Invitation hero — framed arch photo + centered title block.
+/* Wedding-invitation hero: centered type column + side photo that fades in.
    Plain CSS so it renders the same in every build. */
 
 .hero {
@@ -9,183 +9,114 @@
   color: #fff;
 }
 
-.inner {
+/* ── Photo: sits on the right edge and dissolves into the page ── */
+
+.photoWrap {
   position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 6rem 1.5rem 4rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.75rem;
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
-    gap: 4rem;
-    padding: 8.5rem 4rem 6rem;
-    min-height: 760px;
-  }
-}
-
-/* ── Decoration ─────────────────────────────────────────────── */
-
-.sparkle {
-  position: absolute;
   z-index: 0;
-  fill: var(--sept27-gold);
-  opacity: 0.85;
-  pointer-events: none;
+  height: 26rem;
+  margin-bottom: -2rem;
 }
 
-.botanical {
+.photoWrap::after {
+  content: "";
   position: absolute;
-  z-index: 0;
+  inset: 0;
+  background:
+    linear-gradient(to top, var(--sept27-bg) 2%, transparent 60%),
+    linear-gradient(to bottom, color-mix(in srgb, var(--sept27-bg) 70%, transparent), transparent 22%);
   pointer-events: none;
-  opacity: 0.9;
-}
-
-.botanicalTop {
-  top: 4.25rem;
-  right: 0;
-  width: 112px;
-}
-
-/* Bottom-left sprig is desktop-only so it never crowds the mobile CTA */
-.botanicalBottom {
-  display: none;
-}
-
-@media (min-width: 900px) {
-  .botanicalTop {
-    top: 5rem;
-    right: 1rem;
-    width: 210px;
-  }
-
-  .botanicalBottom {
-    display: block;
-    bottom: 0;
-    left: 1rem;
-    width: 210px;
-    transform: rotate(180deg);
-  }
-}
-
-.sparkleA {
-  top: 5.5rem;
-  left: 1.25rem;
-  width: 22px;
-  height: 22px;
-}
-
-.sparkleB {
-  top: 12rem;
-  right: 1.5rem;
-  width: 16px;
-  height: 16px;
-}
-
-.sparkleC {
-  display: none;
-}
-
-@media (min-width: 900px) {
-  .sparkleA {
-    top: 7.5rem;
-    left: 7%;
-    width: 30px;
-    height: 30px;
-  }
-
-  .sparkleB {
-    top: 9rem;
-    right: 6%;
-    width: 20px;
-    height: 20px;
-  }
-
-  .sparkleC {
-    display: block;
-    bottom: 5rem;
-    left: 44%;
-    width: 34px;
-    height: 34px;
-  }
-}
-
-.rail {
-  display: none;
-}
-
-@media (min-width: 900px) {
-  .rail {
-    display: block;
-    position: absolute;
-    z-index: 0;
-    top: 32%;
-    height: 36%;
-    width: 1px;
-    background: color-mix(in srgb, var(--sept27-gold) 45%, transparent);
-  }
-
-  .railLeft {
-    left: 1.75rem;
-  }
-
-  .railRight {
-    right: 1.75rem;
-  }
-}
-
-/* ── Arch photo ─────────────────────────────────────────────── */
-
-.archWrap {
-  width: min(78vw, 340px);
-  margin: 0 auto;
-}
-
-@media (min-width: 900px) {
-  .archWrap {
-    order: 2;
-    width: 100%;
-    max-width: 400px;
-    justify-self: center;
-  }
-}
-
-/* Fine gold frame sitting just outside the photo, like a mount */
-.frame {
-  padding: 9px;
-  border: 1px solid color-mix(in srgb, var(--sept27-gold) 70%, transparent);
-  border-radius: 999px 999px 0 0;
-}
-
-.arch {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border-radius: 999px 999px 0 0;
-  background: var(--sept27-surface);
 }
 
 .photo {
   object-fit: cover;
-  object-position: 50% 32%;
+  object-position: 50% 30%;
+}
+
+@media (min-width: 900px) {
+  .photoWrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 58%;
+    height: auto;
+    margin: 0;
+  }
+
+  /* Eased, wide fade so there is never a visible edge */
+  .photoWrap::after {
+    background:
+      linear-gradient(
+        to right,
+        var(--sept27-bg) 0%,
+        color-mix(in srgb, var(--sept27-bg) 92%, transparent) 10%,
+        color-mix(in srgb, var(--sept27-bg) 70%, transparent) 24%,
+        color-mix(in srgb, var(--sept27-bg) 38%, transparent) 42%,
+        color-mix(in srgb, var(--sept27-bg) 12%, transparent) 60%,
+        transparent 76%
+      ),
+      linear-gradient(to top, var(--sept27-bg) 0%, transparent 20%),
+      linear-gradient(to bottom, color-mix(in srgb, var(--sept27-bg) 70%, transparent), transparent 18%);
+  }
+
+  .photo {
+    object-position: 50% 36%;
+  }
+}
+
+/* Decorative sprig: wide screens only, tucked in the empty bottom-left corner */
+.sprig {
+  display: none;
+}
+
+@media (min-width: 1500px) {
+  .sprig {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 1.5rem;
+    bottom: 0;
+    width: 190px;
+    opacity: 0.55;
+    transform: rotate(180deg);
+    pointer-events: none;
+  }
 }
 
 /* ── Copy ───────────────────────────────────────────────────── */
 
-.copy {
-  min-width: 0;
-  text-align: center;
+.inner {
+  position: relative;
+  z-index: 2;
+  padding: 0 1.5rem 4rem;
 }
 
 @media (min-width: 900px) {
+  .inner {
+    display: flex;
+    align-items: center;
+    min-height: max(760px, 100svh);
+    padding: 8rem 0 5rem;
+  }
+}
+
+.copy {
+  min-width: 0;
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Desktop: centered inside the left ~46% so it sits balanced between the
+   screen edge and the photo */
+@media (min-width: 900px) {
   .copy {
-    order: 1;
+    width: 46%;
+    max-width: none;
+    margin: 0;
+    padding: 0 clamp(2rem, 4vw, 4.5rem);
   }
 }
 
@@ -193,68 +124,81 @@
   margin: 0;
   font-family: var(--font-cormorant-garamond), Georgia, serif;
   font-style: italic;
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
   color: var(--sept27-gold);
 }
 
 .headline {
-  margin: 1rem 0 0;
+  margin: 0.75rem 0 0;
   font-family: var(--font-cormorant-garamond), Georgia, serif;
   font-weight: 300;
   font-variant-caps: small-caps;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  line-height: 1.02;
+  font-size: clamp(3.25rem, 6.2vw, 6rem);
+  line-height: 0.98;
   letter-spacing: 0.02em;
   color: #fff;
-  text-wrap: balance;
 }
 
-/* Sub-headline held between two hairlines */
-.tagline {
+.line {
   display: block;
-  margin: 1.75rem auto 0;
-  max-width: 30rem;
-  padding: 0.875rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--sept27-gold) 55%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--sept27-gold) 55%, transparent);
+}
+
+.divider {
+  display: block;
+  width: min(15rem, 70%);
+  height: auto;
+  margin: 1.5rem auto 0;
+}
+
+.tagline {
+  margin: 1.25rem 0 0;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: clamp(0.75rem, 1.6vw, 0.9375rem);
+  font-size: clamp(0.75rem, 1.3vw, 0.9375rem);
   font-weight: 400;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--sept27-gold);
 }
 
 .subhead {
-  margin: 1.75rem auto 0;
-  max-width: 30rem;
+  margin: 1.5rem auto 0;
+  max-width: 28rem;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 1rem;
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--sept27-gray);
 }
 
 .when {
-  margin: 1.5rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  margin-top: 1.75rem;
+}
+
+.date {
+  margin: 0;
   font-family: var(--font-cormorant-garamond), Georgia, serif;
-  font-size: 1.375rem;
-  line-height: 1.3;
+  font-size: clamp(1.5rem, 2.2vw, 1.875rem);
+  line-height: 1.2;
   color: #fff;
 }
 
-.whenNote {
-  display: block;
+.time {
+  margin: 0.5rem 0 0;
   font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.timeNote {
+  display: block;
+  margin-top: 0.125rem;
   font-size: 0.75rem;
   color: var(--sept27-gray);
 }
 
-/* Wide pill, like the reference's link bar */
 .cta {
   display: flex;
   align-items: center;
