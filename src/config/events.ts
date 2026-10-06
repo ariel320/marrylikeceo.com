@@ -54,7 +54,7 @@ export const EVENTS: readonly EventItem[] = [
     id: "how-to-date-like-a-pro",
     dateISO: "2026-10-27",
     time: "7:00 PM",
-    title: "How to Date Like a Pro (Free Live Event)",
+    title: "Dating Like a Pro - Even If You Got Hurt in the Past (Free Live Event)",
     host: "Ariel Yankelewitz",
     location: "Zoom",
     mode: "Online",
@@ -63,7 +63,7 @@ export const EVENTS: readonly EventItem[] = [
     image: {
       // Placeholder: the previous poster. Overwrite this file with the new poster (same name) to update.
       src: "/images/events/how-to-date-like-a-pro-poster.png",
-      alt: "Marry Like a CEO — How to Date Like a Pro, a free live event with Ariel Yankelewitz",
+      alt: "Marry Like a CEO — Dating Like a Pro - Even If You Got Hurt in the Past, a free live event with Ariel Yankelewitz",
     },
     hostAvatar: {
       src: "/images/events/ariel-avatar.jpg",

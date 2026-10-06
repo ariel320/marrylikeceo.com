@@ -213,14 +213,14 @@ export const COPY = {
   },
   oct27: {
     meta: {
-      title: "How to Date Like a Pro — Marry Like a CEO",
+      title: "Dating Like a Pro - Even If You Got Hurt in the Past — Marry Like a CEO",
       description:
         "A free live event with Ariel Yankelewitz for ambitious women ready for marriage and lasting love. Date with intention, clarity, and confidence — live, October 27, 2026.",
     },
     hero: {
       eyebrow: "Free Live Event",
-      headline: "HOW TO DATE",
-      headlineAccent: "Like a Pro.",
+      headline: "DATING LIKE A PRO",
+      headlineAccent: "EVEN IF YOU GOT HURT IN THE PAST.",
       subhead:
         "Dating shouldn\u2019t feel like a guessing game. A free live event with Ariel Yankelewitz for ambitious women ready for marriage and lasting love.",
       freeBadge: "Free Live Event",
@@ -228,11 +228,11 @@ export const COPY = {
       ctaMicro: "Free to attend. Register on Luma to get your link.",
       imageAlt: "Ariel Yankelewitz",
       posterEyebrow: "Ariel Yankelewitz",
-      posterHeadline: "How to Date Like a Pro",
+      posterHeadline: "Dating Like a Pro - Even If You Got Hurt in the Past",
     },
     invitation: {
       eyebrow: "You're Invited",
-      headline: "How to Date Like a Pro",
+      headline: "Dating Like a Pro - Even If You Got Hurt in the Past",
       dateLabel: "October 27, 2026",
       dayLabel: "Tuesday",
       timeLabel: "7:00 PM ET",
@@ -345,7 +345,7 @@ export const COPY = {
         "A live virtual Experience with Ariel Yankelewitz — the exact framework she used to choose her second husband, walked through in one sitting.",
       freeBadge: "This Event Has Ended",
       cta: "Join the Next Experience",
-      ctaMicro: "Next up: How to Date Like a Pro — October 27, 2026. Free to attend.",
+      ctaMicro: "Next up:Dating Like a Pro - Even If You Got Hurt in the Past — October 27, 2026. Free to attend.",
       imageAlt: "Ariel Yankelewitz",
       posterEyebrow: "Ariel Yankelewitz",
       posterHeadline: "The Dating Code",
@@ -359,7 +359,7 @@ export const COPY = {
       formatLabel: "Live Virtual — Link Sent After Registration",
       body: "Ninety minutes with Ariel. The strategy, the standards, the exact sequence — taught the way she'd teach it to a friend she respected too much to waste her time.",
       cta: "Join the Next Experience",
-      micro: "How to Date Like a Pro — October 27, 2026.",
+      micro: "Dating Like a Pro - Even If You Got Hurt in the Past — October 27, 2026.",
     },
     countdown: {
       eyebrow: "Doors Close In",
