@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 
-import { DuotoneImage } from "@/components/ui/DuotoneImage";
 import { LocalEventTime } from "@/components/oct27/LocalEventTime";
 import { COPY } from "@/constants/copy";
 import { OCT27_EVENT } from "@/config/oct27-event";
@@ -11,185 +11,132 @@ import styles from "./Oct27Hero.module.css";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.9, delay, ease: EASE },
-});
+const Sparkle = ({ className }: { readonly className: string }) => (
+  <svg className={`${styles.sparkle} ${className}`} viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 0c.8 7 5 11.2 12 12-7 .8-11.2 5-12 12-.8-7-5-11.2-12-12C7 11.2 11.2 7 12 0Z" />
+  </svg>
+);
+
+const LEAVES = [
+  { x: 28, y: 168, r: -105, s: 1.1 },
+  { x: 44, y: 140, r: -5, s: 1.05 },
+  { x: 60, y: 114, r: -105, s: 0.95 },
+  { x: 80, y: 88, r: -5, s: 0.85 },
+  { x: 100, y: 60, r: -105, s: 0.7 },
+] as const;
+
+/** Fine gold line-art sprig with a bloom at the tip. */
+const Botanical = ({ className }: { readonly className: string }) => (
+  <svg className={`${styles.botanical} ${className}`} viewBox="0 0 160 200" fill="none" aria-hidden="true">
+    <g stroke="var(--sept27-gold)" strokeWidth="1.1" strokeLinecap="round">
+      <path d="M20 192C40 132 68 84 118 30" />
+      {LEAVES.map((l) => (
+        <path
+          key={`${l.x}-${l.y}`}
+          d="M0 0C10-14 26-14 38 0 26 14 10 14 0 0Z"
+          fill="var(--sept27-gold)"
+          fillOpacity="0.16"
+          transform={`translate(${l.x} ${l.y}) rotate(${l.r}) scale(${l.s})`}
+        />
+      ))}
+      <g transform="translate(122 26)">
+        {[0, 72, 144, 216, 288].map((a) => (
+          <ellipse
+            key={a}
+            cx="0"
+            cy="-11"
+            rx="6"
+            ry="11"
+            fill="var(--sept27-gold)"
+            fillOpacity="0.16"
+            transform={`rotate(${a})`}
+          />
+        ))}
+        <circle r="3.2" fill="var(--sept27-gold)" stroke="none" />
+      </g>
+    </g>
+  </svg>
+);
 
 /**
- * Full-bleed banner hero for the Sept 27 Experience.
- *
- * Layout lives in Oct27Hero.module.css rather than utility classes: the
- * spacing-scale utilities are not resolving in this build, which collapsed
- * every padding and margin and stacked the copy on itself. Scoped CSS keeps
- * the hero correct independently of that.
+ * Invitation hero. Copy block on the left (title, sub between two gold
+ * hairlines, details, pill CTA), arch-framed photo on the right with a fine
+ * gold frame, plus a few quiet sparkles and edge rails. Plain CSS module.
  */
 export const Oct27Hero = () => {
   const { hero } = COPY.oct27;
-
-  const details = [{ label: "Date", value: OCT27_EVENT.dateDisplay }];
-  // OCT27_EVENT.timeDisplay already ends in "ET" (e.g. "12:00 PM ET").
-  // LocalEventTime appends the full word "Eastern Time" itself, so strip
-  // the abbreviation here to avoid "(12:00 PM ET Eastern Time)".
   const easternTimeLabel = OCT27_EVENT.timeDisplay.replace(/\s*ET$/i, "");
 
   return (
     <section id="oct27-hero" className={styles.hero}>
-      <div className={styles.backdrop} aria-hidden="true">
-        <motion.div
-          initial={{ scale: 1.06, opacity: 0.6 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 2, ease: EASE }}
-          className={styles.photo}
-        >
-          <DuotoneImage
-            srcColor="/images/b1.png"
-            srcBW="/images/b1.png"
-            alt={hero.imageAlt}
-            priority
-            sizes="100vw"
-            revealOnLoad
-            revealDelay={1.1}
-          />
-        </motion.div>
-        <div className={styles.scrimHorizontal} />
-        <div className={styles.scrimVertical} />
-      </div>
+      <span className={`${styles.rail} ${styles.railLeft}`} aria-hidden="true" />
+      <span className={`${styles.rail} ${styles.railRight}`} aria-hidden="true" />
+      <Botanical className={styles.botanicalTop} />
+      <Botanical className={styles.botanicalBottom} />
+      <Sparkle className={styles.sparkleA} />
+      <Sparkle className={styles.sparkleB} />
+      <Sparkle className={styles.sparkleC} />
 
       <div className={styles.inner}>
-        <div className={styles.copy}>
-          {/* Mobile-only photo block: full-bleed, edge-to-edge, with the
-              headline overlaid on top of it (gradient scrim underneath for
-              legibility) — same treatment as a typical event-page hero
-              banner. Hidden above 767px via CSS; the desktop background
-              photo below (in .backdrop) is hidden below 767px instead. */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, ease: EASE }}
-            className={styles.mobilePhoto}
-          >
-            <DuotoneImage
-              srcColor="/images/b1.png"
-              srcBW="/images/b1.png"
-              alt={hero.imageAlt}
-              sizes="100vw"
-              revealOnLoad
-              revealDelay={0.6}
-            />
-            <div className={styles.mobilePhotoScrim} aria-hidden="true" />
-            <div className={styles.mobileOverlayCopy}>
-              <motion.h1
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-                className={`${styles.headline} ${styles.headlineFirst} ${styles.mobileHeadline}`}
-              >
-                <span className={styles.headlineLead}>{hero.headline}</span>
-                <span className={styles.headlineAccent}>{hero.headlineAccent}</span>
-              </motion.h1>
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
-              >
-                <a
-                  href={OCT27_EVENT.lumaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.badge}
-                >
-                  {hero.freeBadge}
-                  <span className={styles.ctaArrow} aria-hidden="true">
-                    &rarr;
-                  </span>
-                </a>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Desktop/tablet headline — same content, normal flow, sits over
-              the full-section background photo instead. */}
-          <motion.h1 {...fadeUp(0)} className={`${styles.headline} ${styles.headlineFirst} ${styles.desktopHeadline}`}>
-            <span className={styles.headlineLead}>{hero.headline}</span>
-            <span className={styles.headlineAccent}>{hero.headlineAccent}</span>
-          </motion.h1>
-
-          <motion.div {...fadeUp(0.12)} className={styles.badgeRow}>
-            <a
-              href={OCT27_EVENT.lumaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.badge}
-            >
-              {hero.freeBadge}
-              <span className={styles.ctaArrow} aria-hidden="true">
-                &rarr;
-              </span>
-            </a>
-          </motion.div>
-
-          <motion.p {...fadeUp(0.24)} className={styles.subhead}>
-            {hero.subhead}
-          </motion.p>
-
-          <motion.div {...fadeUp(0.44)} className={styles.actions}>
-            <a
-              href={OCT27_EVENT.lumaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.cta}
-            >
-              {hero.cta}
-              <span className={styles.ctaArrow} aria-hidden="true">
-                &rarr;
-              </span>
-            </a>
-
-            <dl className={styles.meta}>
-              {details.map((detail) => (
-                <div key={detail.label} className={styles.metaItem}>
-                  <dt className={styles.metaLabel}>{detail.label}</dt>
-                  <dd className={styles.metaValue}>{detail.value}</dd>
-                </div>
-              ))}
-              <div className={styles.metaItem}>
-                <dt className={styles.metaLabel}>Time</dt>
-                <dd className={styles.metaValue}>
-                  <LocalEventTime
-                    iso={OCT27_EVENT.dateISO}
-                    fixedLabel={easternTimeLabel}
-                    fallback={OCT27_EVENT.timeDisplay}
-                    noteClassName={styles.metaNote}
-                  />
-                </dd>
-              </div>
-            </dl>
-          </motion.div>
-
-          <motion.p {...fadeUp(0.54)} className={styles.micro}>
-            {hero.ctaMicro}
-          </motion.p>
-        </div>
-
-        <motion.aside
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.6, ease: EASE }}
-          className={styles.poster}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.4, ease: EASE }}
+          className={styles.archWrap}
         >
-          <div className={styles.posterBody}>
-            <span className={styles.posterEyebrow}>{hero.posterEyebrow}</span>
-            <span className={styles.posterHeadline}>{hero.posterHeadline}</span>
-            <span className={styles.posterMeta}>
-              {OCT27_EVENT.dayOfWeek}, {OCT27_EVENT.dateDisplay}
-              <br />
-              {OCT27_EVENT.timeDisplay}
-            </span>
+          <div className={styles.frame}>
+            <div className={styles.arch}>
+              <Image
+                src="/images/A7409435-web.jpg"
+                alt={hero.imageAlt}
+                fill
+                priority
+                quality={90}
+                sizes="(max-width: 899px) 80vw, 440px"
+                className={styles.photo}
+              />
+            </div>
           </div>
-        </motion.aside>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.25, ease: EASE }}
+          className={styles.copy}
+        >
+          <p className={styles.kicker}>A free live event with Ariel Yankelewitz</p>
+
+          <h1 className={styles.headline}>{hero.headlineTitle}</h1>
+
+          <p className={styles.tagline}>{hero.headlineSub}</p>
+
+          <p className={styles.subhead}>{hero.subhead}</p>
+
+          <p className={styles.when}>
+            <span>
+              {OCT27_EVENT.dayOfWeek}, {OCT27_EVENT.dateDisplay}
+            </span>
+            <span className={styles.whenTime}>
+              <LocalEventTime
+                iso={OCT27_EVENT.dateISO}
+                fixedLabel={easternTimeLabel}
+                fallback={OCT27_EVENT.timeDisplay}
+                noteClassName={styles.whenNote}
+              />
+            </span>
+          </p>
+
+          <a
+            href={OCT27_EVENT.lumaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.cta}
+          >
+            {hero.cta}
+          </a>
+          <p className={styles.micro}>{hero.ctaMicro}</p>
+        </motion.div>
       </div>
     </section>
   );

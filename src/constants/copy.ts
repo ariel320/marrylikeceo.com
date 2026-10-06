@@ -221,6 +221,8 @@ export const COPY = {
       eyebrow: "Free Live Event",
       headline: "DATING LIKE A PRO",
       headlineAccent: "EVEN IF YOU GOT HURT IN THE PAST.",
+      headlineTitle: "Dating Like a Pro",
+      headlineSub: "Even If You Got Hurt in the Past",
       subhead:
         "Dating shouldn\u2019t feel like a guessing game. A free live event with Ariel Yankelewitz for ambitious women ready for marriage and lasting love.",
       freeBadge: "Free Live Event",

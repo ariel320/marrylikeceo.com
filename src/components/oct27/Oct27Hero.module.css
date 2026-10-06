@@ -1,13 +1,5 @@
-/* ─────────────────────────────────────────────────────────────
- *  SEPT 27 HERO — scoped, dependency-free layout.
- *
- *  Written as plain CSS on purpose. The hero previously relied on
- *  Tailwind's spacing scale (p-*, m-*, max-w-*, text-*), which is
- *  currently not resolving in this build, so every padding and
- *  margin collapsed and the copy stacked on itself. Real CSS here
- *  means the hero renders correctly regardless of the utility
- *  pipeline.
- * ───────────────────────────────────────────────────────────── */
+/* Invitation hero — framed arch photo + centered title block.
+   Plain CSS so it renders the same in every build. */
 
 .hero {
   position: relative;
@@ -15,317 +7,228 @@
   overflow: hidden;
   background: var(--sept27-bg);
   color: #fff;
-  min-height: 640px;
-  display: flex;
-  align-items: flex-start;
 }
-
-@media (min-width: 1024px) {
-  .hero {
-    min-height: 780px;
-  }
-}
-
-/* ── Background ─────────────────────────────────────────────── */
-
-.backdrop {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-/* Full-bleed cover image. Position it with the object-position values below —
-   the first number is horizontal (0% = left edge, 100% = right edge), the
-   second is vertical (0% = top, 100% = bottom). */
-.photo {
-  position: absolute;
-  inset: 0;
-}
-
-.photo :global(img) {
-  object-fit: cover;
-  object-position: 1% 50%;
-}
-
-.scrimHorizontal {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    95deg,
-    var(--sept27-bg) 0%,
-    var(--sept27-bg) 26%,
-    color-mix(in srgb, var(--sept27-bg) 72%, transparent) 42%,
-    color-mix(in srgb, var(--sept27-bg) 24%, transparent) 60%,
-    transparent 76%
-  );
-}
-
-@media (max-width: 767px) {
-  .scrimHorizontal {
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--sept27-bg) 55%, transparent) 0%,
-      color-mix(in srgb, var(--sept27-bg) 80%, transparent) 45%,
-      var(--sept27-bg) 100%
-    );
-  }
-}
-
-.scrimVertical {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    var(--sept27-bg) 0%,
-    transparent 22%,
-    transparent 48%,
-    color-mix(in srgb, var(--sept27-bg) 78%, transparent) 86%,
-    var(--sept27-bg) 100%
-  );
-}
-
-/* ── Shell ──────────────────────────────────────────────────── */
 
 .inner {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 6.5rem 1.5rem 3rem;
+  padding: 6rem 1.5rem 4rem;
   display: grid;
   grid-template-columns: 1fr;
-  align-items: end;
-  gap: 3rem;
+  gap: 2.75rem;
+  align-items: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .inner {
-    padding: 7.5rem 2.5rem 3.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .inner {
-    grid-template-columns: minmax(0, 1fr) 15rem;
-    padding: 8rem 4rem 3.5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
     gap: 4rem;
+    padding: 8.5rem 4rem 6rem;
+    min-height: 760px;
   }
 }
+
+/* ── Decoration ─────────────────────────────────────────────── */
+
+.sparkle {
+  position: absolute;
+  z-index: 0;
+  fill: var(--sept27-gold);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.botanical {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.botanicalTop {
+  top: 4.25rem;
+  right: 0;
+  width: 112px;
+}
+
+/* Bottom-left sprig is desktop-only so it never crowds the mobile CTA */
+.botanicalBottom {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .botanicalTop {
+    top: 5rem;
+    right: 1rem;
+    width: 210px;
+  }
+
+  .botanicalBottom {
+    display: block;
+    bottom: 0;
+    left: 1rem;
+    width: 210px;
+    transform: rotate(180deg);
+  }
+}
+
+.sparkleA {
+  top: 5.5rem;
+  left: 1.25rem;
+  width: 22px;
+  height: 22px;
+}
+
+.sparkleB {
+  top: 12rem;
+  right: 1.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.sparkleC {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .sparkleA {
+    top: 7.5rem;
+    left: 7%;
+    width: 30px;
+    height: 30px;
+  }
+
+  .sparkleB {
+    top: 9rem;
+    right: 6%;
+    width: 20px;
+    height: 20px;
+  }
+
+  .sparkleC {
+    display: block;
+    bottom: 5rem;
+    left: 44%;
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.rail {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .rail {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: 32%;
+    height: 36%;
+    width: 1px;
+    background: color-mix(in srgb, var(--sept27-gold) 45%, transparent);
+  }
+
+  .railLeft {
+    left: 1.75rem;
+  }
+
+  .railRight {
+    right: 1.75rem;
+  }
+}
+
+/* ── Arch photo ─────────────────────────────────────────────── */
+
+.archWrap {
+  width: min(78vw, 340px);
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .archWrap {
+    order: 2;
+    width: 100%;
+    max-width: 400px;
+    justify-self: center;
+  }
+}
+
+/* Fine gold frame sitting just outside the photo, like a mount */
+.frame {
+  padding: 9px;
+  border: 1px solid color-mix(in srgb, var(--sept27-gold) 70%, transparent);
+  border-radius: 999px 999px 0 0;
+}
+
+.arch {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: var(--sept27-surface);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: 50% 32%;
+}
+
+/* ── Copy ───────────────────────────────────────────────────── */
 
 .copy {
-  max-width: 41rem;
   min-width: 0;
+  text-align: center;
 }
 
-/* Mobile-only photo block — hidden on tablet/desktop, where the full-bleed
-   section background photo (.backdrop) is used instead. On mobile the
-   headline lives INSIDE this block, overlaid on the photo with a scrim
-   underneath, edge-to-edge with no border or rounding — same treatment as
-   a typical event-page hero banner. */
-.mobilePhoto {
-  display: none;
-}
-
-.mobilePhotoScrim {
-  display: none;
-}
-
-.mobileHeadline {
-  display: none;
-}
-
-.mobileOverlayCopy {
-  display: none;
-}
-
-
-@media (max-width: 767px) {
-  .hero {
-    min-height: 0;
-  }
-
-  .backdrop {
-    display: none;
-  }
-
+@media (min-width: 900px) {
   .copy {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .desktopHeadline {
-    display: none;
-  }
-
-  /* The badge now lives inside the photo overlay on mobile (see
-     .mobileOverlayCopy below) — hide the standalone copy that still
-     serves desktop/tablet. */
-  .badgeRow {
-    display: none;
-  }
-
-  .mobilePhoto {
-    display: block;
     order: 1;
-    position: relative;
-    /* Break out of .inner's horizontal padding so the photo runs fully
-       edge-to-edge, flush with the screen on both sides. */
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-  }
-
-  .mobilePhoto :global(img) {
-    object-fit: cover;
-    object-position: 50% 50%;
-  }
-
-  /* A soft, centred dark pool behind the text rather than a full gradient
-     wash — the photo stays bright everywhere else, matching the
-     reference: legibility comes from the text shadow, not a darkened
-     photo. */
-.mobilePhotoScrim {
-  display: block;
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    transparent 55%,
-    rgba(0, 0, 0, 0.65) 75%,
-    rgba(0, 0, 0, 0.95) 100%
-  );
-}
-
-  .mobileOverlayCopy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    justify-content: flex-end;
-    padding: 0 1.5rem 2rem;
-    text-align: center;
-  }
-
-  .mobileHeadline {
-    display: block;
-    margin: 0;
-    text-shadow:
-      0 2px 16px rgba(0, 0, 0, 0.75),
-      0 0 34px rgba(0, 0, 0, 0.55);
-  }
-
-  .mobileHeadline .headlineLead {
-    color: #fff;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
-  }
-
-  .mobileOverlayCopy .badge {
-    margin-top: 1.75rem;
-    gap: 0.5rem;
-    background: rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(2px);
-  }
-
-  .subhead {
-    order: 2;
-    margin-top: 0.875rem;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .actions {
-    order: 3;
-    flex-direction: column !important;
-    align-items: center;
-  }
-
-  .cta {
-    width: 100%;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    font-size: 0.9375rem;
-    padding: 1.25rem 2rem;
-  }
-
-  .micro {
-    order: 4;
-    text-align: center;
-  }
-
-  .meta {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .metaItem {
-    flex: 1 1 0;
-    max-width: 11rem;
-    text-align: center;
-  }
-
-  .metaItem + .metaItem {
-    margin-left: 0;
-    padding-left: 0;
-    border-left: none;
-  }
-
-  .metaValue {
-    white-space: normal;
-  }
-
-  .metaNote {
-    display: block;
-    margin-top: 0.375rem;
   }
 }
 
-/* ── Headline ───────────────────────────────────────────────── */
+.kicker {
+  margin: 0;
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--sept27-gold);
+}
 
 .headline {
-  margin: 1.75rem 0 0;
+  margin: 1rem 0 0;
   font-family: var(--font-cormorant-garamond), Georgia, serif;
   font-weight: 300;
-  font-size: clamp(2.5rem, 5.2vw, 4.75rem);
-  line-height: 1.05;
-  letter-spacing: -0.015em;
+  font-variant-caps: small-caps;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: 0.02em;
   color: #fff;
+  text-wrap: balance;
 }
 
-.headlineFirst {
-  margin-top: 0;
-}
-
-.headlineLead {
+/* Sub-headline held between two hairlines */
+.tagline {
   display: block;
-  font-size: 0.42em;
+  margin: 1.75rem auto 0;
+  max-width: 30rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--sept27-gold) 55%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--sept27-gold) 55%, transparent);
   font-family: var(--font-dm-sans), sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-size: clamp(0.75rem, 1.6vw, 0.9375rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 1rem;
-}
-
-.headlineAccent {
-  display: block;
+  line-height: 1.6;
   color: var(--sept27-gold);
-  font-style: italic;
 }
 
 .subhead {
-  margin: 1.5rem 0 0;
-  max-width: 34rem;
+  margin: 1.75rem auto 0;
+  max-width: 30rem;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 1rem;
   font-weight: 300;
@@ -333,64 +236,41 @@
   color: var(--sept27-gray);
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 1.5rem;
-  padding: 0.625rem 1.5rem;
-  border: 1px solid var(--sept27-gold);
-  border-radius: 999px;
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--sept27-gold);
-  text-decoration: none;
-  cursor: pointer;
-  gap: 0.5rem;
-  transition:
-    background-color 0.3s var(--ease-luxe),
-    color 0.3s var(--ease-luxe);
-}
-
-.badge:hover {
-  background: var(--sept27-gold);
-  color: #000;
-}
-
-/* ── Action row ─────────────────────────────────────────────── */
-
-.actions {
-  margin-top: 2rem;
+.when {
+  margin: 1.5rem 0 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 2rem;
+  gap: 0.25rem;
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-size: 1.375rem;
+  line-height: 1.3;
+  color: #fff;
 }
 
-@media (min-width: 640px) {
-  .actions {
-    flex-direction: row;
-    align-items: center;
-    gap: 2.75rem;
-  }
+.whenNote {
+  display: block;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.75rem;
+  color: var(--sept27-gray);
 }
 
+/* Wide pill, like the reference's link bar */
 .cta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.625rem;
-  flex: none;
-  padding: 1.0625rem 2.5rem;
+  width: 100%;
+  max-width: 22rem;
+  margin: 2rem auto 0;
+  padding: 1.0625rem 2rem;
   border-radius: 999px;
   background: var(--sept27-gold);
   color: #000;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   text-decoration: none;
   transition:
     transform 0.3s var(--ease-luxe),
@@ -399,154 +279,23 @@
 
 .cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 50px -12px
-    color-mix(in srgb, var(--sept27-gold) 60%, transparent);
+  box-shadow: 0 18px 44px -14px color-mix(in srgb, var(--sept27-gold) 60%, transparent);
 }
 
-.ctaArrow {
-  transition: transform 0.3s var(--ease-luxe);
-}
-
-.cta:hover .ctaArrow {
-  transform: translateX(4px);
-}
-
-.meta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-}
-
-.metaItem {
-  min-width: 0;
-  text-align: center;
-}
-
-.metaItem + .metaItem {
-  margin-left: 2rem;
-  padding-left: 2rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.metaLabel {
-  margin: 0;
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--sept27-gold);
-}
-
-.metaValue {
-  margin: 0.4375rem 0 0;
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: #fff;
-  white-space: normal;
-}
-
-.metaNote {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--sept27-gray);
+.cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 .micro {
-  margin: 1.5rem 0 0;
+  margin: 1rem 0 0;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.75rem;
-  color: var(--sept27-gray);
-}
-
-/* ── Poster card ────────────────────────────────────────────── */
-/* Square card: no photo, just eyebrow / title / date-time stacked and
-   vertically centered inside a fixed square box. */
-
-.poster {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .poster {
-    display: flex;
-    justify-self: end;
-    width: fit-content;
-    max-width: 22rem;
-    overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--sept27-gold) 45%, transparent);
-    background: rgba(0, 0, 0, 0.62);
-  }
-}
-
-.posterBody {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.5rem;
-  width: auto;
-  min-width: 0;
-  padding: 1.25rem 1.75rem;
-}
-
-.posterEyebrow {
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--sept27-gold);
-}
-
-.posterHeadline {
-  font-family: var(--font-cormorant-garamond), Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 1.15;
-  color: #fff;
-}
-
-.posterMeta {
-  margin-top: 0.25rem;
-  padding-top: 0.625rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  width: 100%;
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  line-height: 1.7;
+  font-size: 0.8125rem;
   color: var(--sept27-gray);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cta,
-  .ctaArrow {
+  .cta {
     transition: none;
-  }
-}
-
-/* ── Mobile meta correction ────────────────────────────────────
- * The base .meta/.metaItem rules above (align-items: center, etc.)
- * are declared AFTER the earlier mobile media query in this file, so
- * by normal CSS cascade order they were silently winning over the
- * mobile-specific overrides for shared properties. This block comes
- * last on purpose, so it reliably wins on mobile: top-aligns DATE and
- * TIME so a taller multi-line value doesn't push the shorter one's
- * label down, and pulls the two columns closer together. */
-@media (max-width: 767px) {
-  .meta {
-    align-items: flex-start;
-    gap: 1.25rem;
-  }
-
-  .metaItem {
-    max-width: 9rem;
   }
 }
