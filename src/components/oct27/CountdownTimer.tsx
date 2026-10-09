@@ -36,12 +36,12 @@ const NumberCard = ({ value, label }: NumberCardProps) => {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <div className="relative flex h-[76px] w-[72px] items-center justify-center overflow-hidden rounded-[4px] border border-white/10 bg-[var(--sept27-surface)] shadow-[0_20px_40px_-24px_rgba(0,0,0,0.8)] md:h-[96px] md:w-[92px]">
+      <div className="relative flex h-[72px] w-[58px] items-center justify-center overflow-hidden rounded-[4px] border border-[color:var(--mlc-line)] bg-[var(--mlc-card)] shadow-[0_0_30px_-8px_var(--mlc-glow)] md:h-[96px] md:w-[92px]">
         <div
           className="pointer-events-none absolute inset-0 opacity-60"
           style={{
             background:
-              "radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--sept27-gold) 12%, transparent) 0%, transparent 70%)",
+              "radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--mlc-accent) 18%, transparent) 0%, transparent 70%)",
           }}
           aria-hidden="true"
         />
@@ -52,13 +52,13 @@ const NumberCard = ({ value, label }: NumberCardProps) => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -16, opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="relative font-[family-name:var(--font-cormorant-garamond)] text-[34px] font-light text-white md:text-[44px]"
+            className="relative font-[family-name:var(--font-cormorant-garamond)] text-[34px] font-light text-[var(--mlc-text)] md:text-[44px]"
           >
             {display}
           </motion.span>
         </AnimatePresence>
       </div>
-      <span className="font-[family-name:var(--font-dm-sans)] text-[10px] font-medium uppercase tracking-[0.25em] text-[var(--sept27-gray)]">
+      <span className="font-[family-name:var(--font-dm-sans)] text-[10px] font-medium uppercase tracking-[0.25em] text-[var(--mlc-muted)]">
         {label}
       </span>
     </div>
@@ -105,20 +105,20 @@ export const CountdownTimer = ({ targetISO, labels, onComplete }: CountdownTimer
 
   return (
     <div
-      className="flex items-center justify-center gap-3 md:gap-5"
+      className="flex items-center justify-center gap-2 md:gap-5"
       aria-live="polite"
       aria-label="Countdown to the event"
     >
       <NumberCard value={mounted ? timeLeft.days : 0} label={labels.days} />
-      <span className="pb-6 font-[family-name:var(--font-cormorant-garamond)] text-2xl text-[var(--sept27-gold)] md:pb-8 md:text-3xl">
+      <span className="pb-6 font-[family-name:var(--font-cormorant-garamond)] text-2xl text-[var(--mlc-gold-display)] md:pb-8 md:text-3xl">
         :
       </span>
       <NumberCard value={mounted ? timeLeft.hours : 0} label={labels.hours} />
-      <span className="pb-6 font-[family-name:var(--font-cormorant-garamond)] text-2xl text-[var(--sept27-gold)] md:pb-8 md:text-3xl">
+      <span className="pb-6 font-[family-name:var(--font-cormorant-garamond)] text-2xl text-[var(--mlc-gold-display)] md:pb-8 md:text-3xl">
         :
       </span>
       <NumberCard value={mounted ? timeLeft.minutes : 0} label={labels.minutes} />
-      <span className="pb-6 font-[family-name:var(--font-cormorant-garamond)] text-2xl text-[var(--sept27-gold)] md:pb-8 md:text-3xl">
+      <span className="pb-6 font-[family-name:var(--font-cormorant-garamond)] text-2xl text-[var(--mlc-gold-display)] md:pb-8 md:text-3xl">
         :
       </span>
       <NumberCard value={mounted ? timeLeft.seconds : 0} label={labels.seconds} />

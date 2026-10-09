@@ -1,0 +1,67 @@
+/* Section tones for the free live event page: navy / ivory / white.
+ * Each tone sets the --mlc-* tokens on the element it is applied to, so
+ * components only read var(--mlc-*). Selectors are all class-based (pure)
+ * so this works as a CSS module. */
+
+.navy {
+  --mlc-ivory: #0a1c30;
+  --mlc-section-a: #0a1c30;
+  --mlc-section-b: #0a1c30;
+  --mlc-tint: #07141f;
+  --mlc-text: #f5f3ee;
+  --mlc-muted: #b4bfcb;
+  --mlc-gold: #d4a64f;
+  --mlc-accent: #d4a64f;
+  --mlc-gold-text: #e0b965;
+  --mlc-gold-display: #e8c477;
+  --mlc-card: #0f2740;
+  --mlc-line: rgba(212, 166, 79, 0.55);
+  --mlc-glow: rgba(212, 166, 79, 0.45);
+  --mlc-btn-bg: #d4a64f;
+  --mlc-btn-fg: #071c2c;
+  --mlc-btn-hover: #e6ba62;
+}
+
+.light,
+.white {
+  --mlc-text: #071c2c;
+  --mlc-muted: #52606d;
+  --mlc-gold: #d4a64f;
+  --mlc-accent: #c9a04a;
+  --mlc-gold-text: #8a6a1e;
+  --mlc-gold-display: #b58a2b;
+  --mlc-line: rgba(201, 160, 74, 0.65);
+  --mlc-glow: rgba(212, 166, 79, 0.42);
+  --mlc-btn-bg: #071c2c;
+  --mlc-btn-fg: #e0b965;
+  --mlc-btn-hover: #0d2b44;
+}
+
+.light {
+  --mlc-ivory: #f8f5ef;
+  --mlc-section-a: #f8f5ef;
+  --mlc-section-b: #f8f5ef;
+  --mlc-tint: #f2eadb;
+  --mlc-card: #ffffff;
+}
+
+.white {
+  --mlc-ivory: #ffffff;
+  --mlc-section-a: #ffffff;
+  --mlc-section-b: #ffffff;
+  --mlc-tint: #ffffff;
+  --mlc-card: #fbf8f1;
+}
+
+/* Gold lining along the top edge of each section plus a soft gold light
+   bleeding down from it. background-image only, so each component keeps
+   its own background-color. */
+section.lined {
+  box-shadow: inset 0 1px 0 var(--mlc-line);
+  background-image: radial-gradient(
+    70% 150px at 50% 0,
+    color-mix(in srgb, var(--mlc-gold) 22%, transparent),
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+}

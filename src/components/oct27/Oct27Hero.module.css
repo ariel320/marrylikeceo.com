@@ -1,21 +1,35 @@
-/* Wedding-invitation hero: centered type column + side photo that fades in.
-   Plain CSS so it renders the same in every build. */
+/* Editorial hero. Colors come from the --mlc-* tokens set on the page wrapper. */
 
 .hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: var(--sept27-bg);
-  color: #fff;
+  background: var(--mlc-ivory);
+  color: var(--mlc-text);
 }
 
-/* ── Photo: sits on the right edge and dissolves into the page ── */
+/* Header band: the shared navbar is gold-on-transparent, so keep a navy strip behind it */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 auto 0;
+  height: 64px;
+  background: var(--mlc-navy);
+}
 
+@media (min-width: 768px) {
+  .hero::before {
+    height: 76px;
+  }
+}
+
+/* ── Photo ── */
 .photoWrap {
   position: relative;
   z-index: 0;
-  height: 26rem;
-  margin-bottom: -2rem;
+  height: 27rem;
+  margin-bottom: -2.5rem;
 }
 
 .photoWrap::after {
@@ -23,8 +37,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, var(--sept27-bg) 2%, transparent 60%),
-    linear-gradient(to bottom, color-mix(in srgb, var(--sept27-bg) 70%, transparent), transparent 22%);
+    linear-gradient(to top, var(--mlc-ivory) 2%, transparent 36%);
   pointer-events: none;
 }
 
@@ -33,186 +46,230 @@
   object-position: 50% 30%;
 }
 
+.signature {
+  position: absolute;
+  z-index: 2;
+  right: 1.25rem;
+  bottom: 3.5rem;
+  margin: 0;
+  padding: 0.75rem 1.125rem;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: color-mix(in srgb, var(--mlc-ivory) 88%, transparent);
+  border-right: 2px solid var(--mlc-accent);
+  box-shadow: 0 0 34px -6px var(--mlc-glow);
+  backdrop-filter: blur(6px);
+}
+
+.sigName {
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-style: italic;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--mlc-text);
+}
+
+.sigRole {
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mlc-gold-text);
+}
+
 @media (min-width: 900px) {
   .photoWrap {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 58%;
+    inset: 0 0 0 auto;
+    width: 62%;
     height: auto;
     margin: 0;
   }
 
-  /* Eased, wide fade so there is never a visible edge */
   .photoWrap::after {
     background:
       linear-gradient(
         to right,
-        var(--sept27-bg) 0%,
-        color-mix(in srgb, var(--sept27-bg) 92%, transparent) 10%,
-        color-mix(in srgb, var(--sept27-bg) 70%, transparent) 24%,
-        color-mix(in srgb, var(--sept27-bg) 38%, transparent) 42%,
-        color-mix(in srgb, var(--sept27-bg) 12%, transparent) 60%,
-        transparent 76%
+        var(--mlc-ivory) 0%,
+        color-mix(in srgb, var(--mlc-ivory) 94%, transparent) 8%,
+        color-mix(in srgb, var(--mlc-ivory) 72%, transparent) 17%,
+        color-mix(in srgb, var(--mlc-ivory) 38%, transparent) 27%,
+        color-mix(in srgb, var(--mlc-ivory) 10%, transparent) 36%,
+        transparent 44%
       ),
-      linear-gradient(to top, var(--sept27-bg) 0%, transparent 20%),
-      linear-gradient(to bottom, color-mix(in srgb, var(--sept27-bg) 70%, transparent), transparent 18%);
+      linear-gradient(to top, var(--mlc-ivory) 0%, transparent 10%);
   }
 
+  /* Shifts the portrait up so Ariel's head lines up with the
+     "FREE LIVE EVENT" label. Higher % = image moves further up. */
   .photo {
-    object-position: 50% 36%;
+    object-position: 50% 46%;
+  }
+
+  .signature {
+    right: 3rem;
+    bottom: 2.5rem;
+  }
+
+  .sigName {
+    font-size: 2.25rem;
   }
 }
 
-/* Decorative sprig: wide screens only, tucked in the empty bottom-left corner */
-.sprig {
-  display: none;
-}
-
-@media (min-width: 1500px) {
-  .sprig {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    left: 1.5rem;
-    bottom: 0;
-    width: 190px;
-    opacity: 0.55;
-    transform: rotate(180deg);
-    pointer-events: none;
-  }
-}
-
-/* ── Copy ───────────────────────────────────────────────────── */
-
+/* ── Copy ── */
 .inner {
   position: relative;
   z-index: 2;
-  padding: 0 1.5rem 4rem;
+  padding: 0 1.5rem 3.5rem;
 }
 
 @media (min-width: 900px) {
   .inner {
     display: flex;
     align-items: center;
-    min-height: max(760px, 100svh);
-    padding: 8rem 0 5rem;
+    min-height: max(680px, 88svh);
+    padding: 7.5rem 0 4.5rem clamp(1.5rem, 7vw, 8rem);
   }
 }
 
 .copy {
-  min-width: 0;
-  width: 100%;
-  max-width: 34rem;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 36rem;
 }
 
-/* Desktop: centered inside the left ~46% so it sits balanced between the
-   screen edge and the photo */
-@media (min-width: 900px) {
-  .copy {
-    width: 46%;
-    max-width: none;
-    margin: 0;
-    padding: 0 clamp(2rem, 4vw, 4.5rem);
-  }
-}
-
-.kicker {
+.label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin: 0;
-  font-family: var(--font-cormorant-garamond), Georgia, serif;
-  font-style: italic;
-  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
-  color: var(--sept27-gold);
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mlc-gold-text);
+}
+
+.label::before {
+  content: "";
+  width: 3rem;
+  height: 1px;
+  background: var(--mlc-accent);
 }
 
 .headline {
-  margin: 0.75rem 0 0;
+  margin: 1.25rem 0 0;
   font-family: var(--font-cormorant-garamond), Georgia, serif;
   font-weight: 300;
-  font-variant-caps: small-caps;
-  font-size: clamp(3.25rem, 6.2vw, 6rem);
+  font-size: clamp(3.25rem, 6.6vw, 6.25rem);
   line-height: 0.98;
-  letter-spacing: 0.02em;
-  color: #fff;
+  letter-spacing: -0.01em;
 }
 
-.line {
+.ivory,
+.gold {
   display: block;
 }
 
-.divider {
-  display: block;
-  width: min(15rem, 70%);
-  height: auto;
-  margin: 1.5rem auto 0;
+.ivory {
+  color: var(--mlc-text);
 }
 
-.tagline {
-  margin: 1.25rem 0 0;
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: clamp(0.75rem, 1.3vw, 0.9375rem);
+.gold {
+  text-shadow: 0 0 34px color-mix(in srgb, var(--mlc-gold) 55%, transparent);
+  font-style: italic;
   font-weight: 400;
+  color: var(--mlc-gold-display);
+}
+
+.sub {
+  margin: 1.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--mlc-accent) 55%, transparent);
+  max-width: 26rem;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: clamp(0.75rem, 1.3vw, 0.875rem);
+  font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   line-height: 1.7;
-  color: var(--sept27-gold);
+  color: var(--mlc-gold-text);
 }
 
-.subhead {
-  margin: 1.5rem auto 0;
-  max-width: 28rem;
+.description {
+  margin: 1.25rem 0 0;
+  max-width: 30rem;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 300;
   line-height: 1.75;
-  color: var(--sept27-gray);
+  color: var(--mlc-muted);
 }
 
 .when {
   margin-top: 1.75rem;
 }
 
-.date {
+/* One line: date | time (wraps after the bar on narrow screens) */
+.whenLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem 0.875rem;
   margin: 0;
   font-family: var(--font-cormorant-garamond), Georgia, serif;
-  font-size: clamp(1.5rem, 2.2vw, 1.875rem);
-  line-height: 1.2;
-  color: #fff;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.3;
+  color: var(--mlc-text);
 }
 
-.time {
-  margin: 0.5rem 0 0;
-  font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.9375rem;
+.part {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.bar {
+  color: var(--mlc-gold-display);
   font-weight: 300;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.78);
 }
 
-.timeNote {
+.icon {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--mlc-accent);
+}
+
+.local {
   display: block;
-  margin-top: 0.125rem;
-  font-size: 0.75rem;
-  color: var(--sept27-gray);
+  margin: 0.625rem 0 0;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  color: var(--mlc-muted);
+}
+
+.hidden {
+  display: none;
 }
 
 .cta {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 22rem;
-  margin: 2rem auto 0;
-  padding: 1.0625rem 2rem;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+  padding: 1.125rem 2.5rem;
   border-radius: 999px;
-  background: var(--sept27-gold);
-  color: #000;
+  background: var(--mlc-btn-bg);
+  color: var(--mlc-btn-fg);
+  box-shadow: 0 0 28px -4px var(--mlc-glow);
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: none;
@@ -221,25 +278,118 @@
     box-shadow 0.3s var(--ease-luxe);
 }
 
+@media (max-width: 599px) {
+  .cta {
+    display: flex;
+    width: 100%;
+  }
+}
+
 .cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 44px -14px color-mix(in srgb, var(--sept27-gold) 60%, transparent);
+  background: var(--mlc-btn-hover);
+  box-shadow: 0 0 44px -2px var(--mlc-glow), 0 18px 44px -14px var(--mlc-glow);
 }
 
 .cta:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--mlc-gold);
   outline-offset: 3px;
 }
 
 .micro {
-  margin: 1rem 0 0;
+  margin: 0.875rem 0 0;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 0.8125rem;
-  color: var(--sept27-gray);
+  color: var(--mlc-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .cta {
     transition: none;
+  }
+}
+
+/* Mobile and small tablets: center the whole title block */
+@media (max-width: 899px) {
+  .copy {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .label {
+    justify-content: center;
+  }
+
+  .label::after {
+    content: "";
+    width: 3rem;
+    height: 1px;
+    background: var(--mlc-accent);
+  }
+
+  .sub,
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .whenLine {
+    justify-content: center;
+  }
+}
+
+/* Phones: same "date | time" line, using the short forms (Tue, Oct 27, 2026 | 7:00 PM ET) so it fits on one row */
+.short {
+  display: none;
+}
+
+@media (max-width: 559px) {
+  .long {
+    display: none;
+  }
+
+  .short {
+    display: inline;
+  }
+
+  .whenLine {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+  }
+
+  .whenLine .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Slow gold glow behind the headline */
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 8%;
+  left: -12%;
+  width: 62%;
+  height: 80%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--mlc-gold) 24%, transparent), transparent);
+  animation: glowPulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::after {
+    animation: none;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
   }
 }

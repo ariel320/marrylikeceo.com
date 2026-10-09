@@ -11,30 +11,45 @@ import styles from "./Oct27FloatingCTA.module.css";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Sticky reserve-seat bar. Appears once the visitor scrolls past the hero
- * and stays pinned to the bottom of the viewport for the rest of the page.
- * Intentionally has no close/dismiss control — it's meant to stay
- * available the whole time someone is reading the page.
+ * Sticky bar so visitors always see which event this is while they scroll.
+ * Shows: "Upcoming live event" label, the event name tag, date · time, and
+ * the Reserve button. Appears once the hero scrolls out of view, and tucks
+ * away while the final call-to-action section is on screen (it would just
+ * duplicate that button and cover the footer).
  */
 export const Oct27FloatingCTA = () => {
   const { hero } = COPY.oct27;
-  const [visible, setVisible] = useState(false);
+  // "October 27, 2026" -> "Oct 27" for narrow phones so the line never truncates
+  const shortDate = OCT27_EVENT.dateDisplay.replace(/^([A-Za-z]{3})[A-Za-z]*\s+(\d+).*$/, "$1 $2");
+  const [heroInView, setHeroInView] = useState(true);
+  const [finalInView, setFinalInView] = useState(false);
 
   useEffect(() => {
     const heroEl = document.getElementById("oct27-hero");
+    const finalEl = document.getElementById("oct27-final-cta");
     if (!heroEl) {
-      setVisible(true);
+      setHeroInView(false);
       return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => setHeroInView(entry.isIntersecting),
       { rootMargin: "-1px 0px 0px 0px" },
     );
+    heroObserver.observe(heroEl);
 
-    observer.observe(heroEl);
-    return () => observer.disconnect();
+    const finalObserver = new IntersectionObserver(([entry]) =>
+      setFinalInView(entry.isIntersecting),
+    );
+    if (finalEl) finalObserver.observe(finalEl);
+
+    return () => {
+      heroObserver.disconnect();
+      finalObserver.disconnect();
+    };
   }, []);
+
+  const visible = !heroInView && !finalInView;
 
   return (
     <AnimatePresence>
@@ -45,14 +60,18 @@ export const Oct27FloatingCTA = () => {
           exit={{ y: 96, opacity: 0 }}
           transition={{ duration: 0.4, ease: EASE }}
           className={styles.bar}
+          data-tone="navy"
           role="complementary"
           aria-label="Reserve your seat"
         >
           <div className={styles.inner}>
             <div className={styles.copy}>
-              <p className={styles.label}>{hero.freeBadge}</p>
+              <p className={styles.label}>Upcoming live event</p>
+              <p className={styles.tag}>{hero.headlineTitle}</p>
               <p className={styles.sub}>
-                {OCT27_EVENT.dateDisplay} &middot; {OCT27_EVENT.timeDisplay}
+                <span className={styles.long}>{OCT27_EVENT.dateDisplay}</span>
+                <span className={styles.short}>{shortDate}</span>
+                {" "}&middot; {OCT27_EVENT.timeDisplay}
               </p>
             </div>
             <a

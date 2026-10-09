@@ -26,7 +26,7 @@ export const Oct27Invitation = () => {
   ];
 
   return (
-    <Oct27Section id="oct27-invitation" theme="bg" maxWidth={1000}>
+    <Oct27Section id="oct27-invitation" theme="bg" tone="light" maxWidth={1000}>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}

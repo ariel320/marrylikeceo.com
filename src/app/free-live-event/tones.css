@@ -1,0 +1,48 @@
+/* ─────────────────────────────────────────────────────────────
+ *  Free live event page — marrylikeceo.com palette.
+ *  Same tokens as the main site (src/app/globals.css):
+ *    deep navy   #1A1C2E  section background
+ *    bg-dark     #13151F  tints / video frame
+ *    elevated    #1E2030  cards
+ *    old gold    #B8975A  eyebrows, icons, hairlines
+ *    crimson     #C1272D  pill buttons (hover #A01F25)
+ *    text        #F5F3EE / secondary #9A978F
+ *  Every <section data-tone="..."> resolves to this one palette.
+ * ───────────────────────────────────────────────────────────── */
+
+[data-tone="navy"],
+[data-tone="light"],
+[data-tone="white"] {
+  --mlc-navy: #1a1c2e;
+  --mlc-charcoal: #13151f;
+  --mlc-ivory: #1a1c2e;
+  --mlc-text: #f5f3ee;
+  --mlc-muted: #9a978f;
+  --mlc-gold: #b8975a;
+  --mlc-accent: #b8975a;
+  --mlc-gold-text: #b8975a;
+  --mlc-gold-display: #c9aa70;
+  --mlc-gray: #9a978f;
+  --mlc-line: rgba(184, 151, 90, 0.5);
+  --mlc-glow: rgba(184, 151, 90, 0.35);
+  --mlc-tint: #13151f;
+  --mlc-card: #1e2030;
+  --mlc-section-a: #1a1c2e;
+  --mlc-section-b: #1a1c2e;
+  --mlc-btn-bg: #c1272d;
+  --mlc-btn-fg: #f5f3ee;
+  --mlc-btn-hover: #a01f25;
+}
+
+/* Gold hairline along the top edge of every section + a soft gold light
+   bleeding down from it. background-image only, so each component keeps
+   its own background-color. */
+section[data-tone] {
+  box-shadow: inset 0 1px 0 var(--mlc-line);
+  background-image: radial-gradient(
+    70% 150px at 50% 0,
+    color-mix(in srgb, var(--mlc-gold) 16%, transparent),
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+}

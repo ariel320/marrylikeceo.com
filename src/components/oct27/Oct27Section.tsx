@@ -15,6 +15,8 @@ interface Oct27SectionProps {
   /** Max content width in pixels. Defaults to 1152px (~max-w-6xl). */
   readonly maxWidth?: number;
   readonly padding?: Oct27SectionPadding;
+  /** Colour tone: "navy", "light" (ivory) or "white". Tokens live in app/free-live-event/tones.css. */
+  readonly tone?: "navy" | "light" | "white";
   readonly children?: React.ReactNode;
 }
 
@@ -42,11 +44,13 @@ export const Oct27Section = ({
   className,
   maxWidth = 1152,
   padding = "default",
+  tone,
   children,
 }: Oct27SectionProps) => {
   return (
     <section
       id={id}
+      data-tone={tone}
       className={cn(
         styles.section,
         themeStyles[theme],

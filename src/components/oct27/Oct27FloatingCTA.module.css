@@ -1,5 +1,5 @@
-/* Persistent floating reserve-seat bar. No dismiss control by design —
- * it should stay available the whole time someone is scrolling the page. */
+/* Persistent floating reserve-seat bar (navy + gold, matches the redesign
+ * palette set on the page wrapper). No dismiss control by design. */
 
 .bar {
   position: fixed;
@@ -9,10 +9,11 @@
   z-index: 60;
   display: flex;
   justify-content: center;
-  padding: 0.875rem 1.25rem calc(0.875rem + env(safe-area-inset-bottom, 0px));
-  background: color-mix(in srgb, var(--sept27-bg) 88%, transparent);
-  border-top: 1px solid color-mix(in srgb, var(--sept27-gold) 30%, transparent);
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, var(--mlc-navy) 94%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--mlc-gold) 45%, transparent);
   backdrop-filter: blur(10px);
+  box-shadow: 0 -12px 44px -14px var(--mlc-glow);
 }
 
 .inner {
@@ -21,36 +22,41 @@
   justify-content: space-between;
   gap: 1rem;
   width: 100%;
-  max-width: 640px;
+  max-width: 720px;
 }
 
 .copy {
-  display: none;
   min-width: 0;
-}
-
-@media (min-width: 480px) {
-  .copy {
-    display: block;
-  }
 }
 
 .label {
   margin: 0;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--sept27-gold);
+  color: var(--mlc-gold);
   white-space: nowrap;
+}
+
+.tag {
+  margin: 0.125rem 0 0;
+  font-family: var(--font-cormorant-garamond), Georgia, serif;
+  font-size: 1.1875rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--mlc-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sub {
   margin: 0.125rem 0 0;
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 0.75rem;
-  color: var(--sept27-gray);
+  color: var(--mlc-gray);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,19 +68,67 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.8125rem 1.75rem;
+  padding: 0.75rem 1.125rem;
   border-radius: 999px;
-  background: var(--sept27-gold);
-  color: #000;
+  background: var(--mlc-btn-bg);
+  color: var(--mlc-btn-fg);
+  box-shadow: 0 0 24px -4px var(--mlc-glow);
   font-family: var(--font-dm-sans), sans-serif;
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;
   white-space: nowrap;
   transition: transform 0.3s var(--ease-luxe);
 }
 
+@media (min-width: 480px) {
+  .bar {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .cta {
+    padding: 0.8125rem 1.75rem;
+  }
+
+  .tag {
+    font-size: 1.375rem;
+  }
+}
+
 .cta:hover {
+  background: var(--mlc-btn-hover);
   transform: translateY(-2px);
+  box-shadow: 0 0 38px -2px var(--mlc-glow);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--mlc-gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+}
+
+/* Phones: short date ("Oct 27"); wider screens: full date */
+.short {
+  display: inline;
+}
+
+.long {
+  display: none;
+}
+
+@media (min-width: 420px) {
+  .short {
+    display: none;
+  }
+
+  .long {
+    display: inline;
+  }
 }

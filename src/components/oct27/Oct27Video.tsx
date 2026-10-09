@@ -17,44 +17,47 @@ const fadeUp = (delay: number) => ({
 
 /**
  * ─────────────────────────────────────────────────────────────
- *  VIDEO SLOT
+ *  INVITE VIDEO SLOT  (9:16 portrait)
  * ─────────────────────────────────────────────────────────────
- *  Points at /public/images/sample.mp4. Swap VIDEO_SRC once the
- *  final event video is ready (also update POSTER_SRC to a real
- *  thumbnail if you have one).
+ *  1. Drop the final file in /public/images/ (e.g. oct27-invite.mp4)
+ *  2. Set VIDEO_SRC below to "/images/oct27-invite.mp4"
+ *  3. Optionally set POSTER_SRC to a 9:16 thumbnail
+ *  While VIDEO_SRC is empty, a "Coming Soon" placeholder shows.
  * ─────────────────────────────────────────────────────────────
  */
-const VIDEO_SRC = ""; // e.g. "/images/oct27-invite.mp4" — leave empty to show "Coming Soon"
-const POSTER_SRC = "/images/ariel-hero.jpg";
+const VIDEO_SRC = "";
+const POSTER_SRC = "";
 
 export const Oct27Video = () => {
   return (
-    <Oct27Section id="oct27-video" theme="bg" padding="none-top">
+    <Oct27Section id="oct27-video" theme="bg" tone="light" maxWidth={560}>
       <motion.div {...fadeUp(0)} className={styles.wrap}>
-        <div className={`sept27-card-aura ${styles.frame}`}>
+        <p className={styles.eyebrow}>A personal invitation</p>
+        <h2 className={styles.title}>Watch your invite</h2>
+
+        <div className={styles.frame}>
           {VIDEO_SRC ? (
-            <div className={styles.player}>
-              <video
-                key={VIDEO_SRC}
-                controls
-                autoPlay
-                muted
-                playsInline
-                loop
-                poster={POSTER_SRC}
-                preload="auto"
-              >
-                <source src={VIDEO_SRC} type="video/mp4" />
-              </video>
-            </div>
+            <video
+              key={VIDEO_SRC}
+              className={styles.video}
+              controls
+              playsInline
+              preload="metadata"
+              poster={POSTER_SRC || undefined}
+            >
+              <source src={VIDEO_SRC} type="video/mp4" />
+            </video>
           ) : (
             <div className={styles.comingSoon}>
-              <span className={styles.comingSoonBadge}>Coming Soon</span>
-              <p className={styles.comingSoonText}>Ariel&rsquo;s invitation video</p>
+              <span className={styles.playIcon} aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+              <span className={styles.badge}>Coming Soon</span>
             </div>
           )}
         </div>
-        <p className={styles.caption}>Your invitation, from Ariel — video coming soon.</p>
       </motion.div>
     </Oct27Section>
   );

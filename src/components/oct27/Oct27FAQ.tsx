@@ -4,9 +4,9 @@ import { useState, useCallback } from "react";
 import { motion } from "motion/react";
 
 import { Oct27Section } from "@/components/oct27/Oct27Section";
-import { AccordionItem } from "@/components/ui/Accordion";
 import { COPY } from "@/constants/copy";
 import { OCT27_FAQ_DATA } from "@/lib/oct27-faq-data";
+
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -26,51 +26,47 @@ export const Oct27FAQ = () => {
   }, []);
 
   return (
-    <Oct27Section theme="surface" id="faq" maxWidth={760}>
-      <motion.div {...fadeUp(0)} className="flex items-center justify-center gap-4">
-        <span className="sept27-hairline-gold w-10 flex-none" aria-hidden="true" />
-        <p className="font-[family-name:var(--font-dm-sans)] text-[11px] font-medium uppercase tracking-[0.3em] text-[var(--sept27-gold)]">
-          {faq.eyebrow}
-        </p>
-        <span
-          className="h-px w-10 flex-none"
-          style={{
-            background:
-              "linear-gradient(to left, var(--sept27-gold) 0%, color-mix(in srgb, var(--sept27-gold) 20%, transparent) 100%)",
-          }}
-          aria-hidden="true"
-        />
+    <Oct27Section theme="surface" tone="navy" id="faq" maxWidth={760}>
+      <motion.div {...fadeUp(0)} className="o27f-eyebrowRow">
+        <span className="o27f-hair" aria-hidden="true" />
+        <p className="o27f-eyebrow">{faq.eyebrow}</p>
+        <span className="o27f-hair" aria-hidden="true" />
       </motion.div>
 
-      <motion.h2
-        {...fadeUp(0.1)}
-        className="mt-6 text-center font-[family-name:var(--font-cormorant-garamond)] text-[clamp(28px,3.6vw,44px)] font-light leading-[1.1] text-white"
-      >
+      <motion.h2 {...fadeUp(0.1)} className="o27f-headline">
         {faq.headline}
       </motion.h2>
 
-      <motion.div {...fadeUp(0.18)} className="mt-12">
-        {OCT27_FAQ_DATA.map((item) => (
-          <AccordionItem
-            key={item.slug}
-            id={`oct27-faq-${item.slug}`}
-            question={item.question}
-            theme="dark"
-            isOpen={openSlug === item.slug}
-            onToggle={() => handleToggle(item.slug)}
-          >
-            <div className="flex flex-col gap-3">
-              {item.answer.map((paragraph, pIdx) => (
-                <p
-                  key={pIdx}
-                  className="font-[family-name:var(--font-dm-sans)] font-light text-[15px] leading-relaxed text-[var(--sept27-gray)]"
-                >
-                  {paragraph}
-                </p>
-              ))}
+      <motion.div {...fadeUp(0.18)} className="o27f-list">
+        {OCT27_FAQ_DATA.map((item) => {
+          const isOpen = openSlug === item.slug;
+          const id = `oct27-faq-${item.slug}`;
+          return (
+            <div key={item.slug} className={`o27f-item${isOpen ? " o27f-open" : ""}`}>
+              <button
+                type="button"
+                className="o27f-question"
+                aria-expanded={isOpen}
+                aria-controls={`${id}-content`}
+                onClick={() => handleToggle(item.slug)}
+              >
+                <span>{item.question}</span>
+                <span className="o27f-plus" aria-hidden="true">
+                  +
+                </span>
+              </button>
+              <div id={`${id}-content`} role="region" className="o27f-panel">
+                <div className="o27f-panelInner">
+                  <div className="o27f-answer">
+                    {item.answer.map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-          </AccordionItem>
-        ))}
+          );
+        })}
       </motion.div>
     </Oct27Section>
   );

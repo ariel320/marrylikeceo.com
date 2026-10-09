@@ -10,7 +10,7 @@
 .section {
   position: relative;
   padding: 5rem 1.5rem;
-  color: #fff;
+  color: var(--mlc-text);
 }
 
 @media (min-width: 1024px) {
@@ -36,11 +36,11 @@
 }
 
 .bg {
-  background: var(--sept27-bg);
+  background: var(--mlc-section-a, var(--sept27-bg));
 }
 
 .surface {
-  background: var(--sept27-surface);
+  background: var(--mlc-section-b, var(--sept27-surface));
 }
 
 .inner {
