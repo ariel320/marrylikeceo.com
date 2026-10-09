@@ -88,3 +88,38 @@
   text-transform: uppercase;
   color: var(--mlc-gold);
 }
+
+/* "Tap for sound" pill over the autoplaying (muted) video */
+.unmute {
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  border: 1px solid var(--mlc-gold);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mlc-charcoal) 78%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--mlc-text);
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 24px -6px var(--mlc-glow);
+  transition: background 0.3s var(--ease-luxe);
+}
+
+.unmute:hover {
+  background: var(--mlc-btn-bg);
+  border-color: var(--mlc-btn-bg);
+}
+
+.unmute:focus-visible {
+  outline: 2px solid var(--mlc-accent);
+  outline-offset: 3px;
+}
