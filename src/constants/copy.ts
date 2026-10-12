@@ -224,13 +224,38 @@ export const COPY = {
       headlineTitle: "Dating Like a Pro",
       headlineSub: "Even If You Got Hurt in the Past",
       subhead:
-        "Dating shouldn\u2019t feel like a guessing game. A free live event with Ariel Yankelewitz for ambitious women ready for marriage and lasting love.",
+        "Dating shouldn\u2019t feel like a guessing game. A free live training with Ariel Yankelewitz for ambitious women ready for marriage and lasting love.",
       freeBadge: "Free Live Event",
       cta: "Reserve Your Seat",
       ctaMicro: "Free to attend. Register on Luma to get your link.",
       imageAlt: "Ariel Yankelewitz",
       posterEyebrow: "Ariel Yankelewitz",
       posterHeadline: "Dating Like a Pro - Even If You Got Hurt in the Past",
+    },
+    learn: {
+      eyebrow: "What You\u2019ll Learn",
+      headline: "Four shifts in",
+      headlineAccent: "one evening.",
+      items: [
+        {
+          title: "How to begin, even if you haven\u2019t dated in years",
+          recap: "How to begin again",
+        },
+        {
+          title: "Why you define the relationship before the man",
+          recap: "Define the relationship first",
+        },
+        {
+          title: "How to prepare for a date, inside and out",
+          recap: "Prepare for a date, inside and out",
+        },
+        {
+          title: "How to walk in as the chooser",
+          recap: "Walk in as the chooser",
+        },
+      ],
+      cta: "Reserve Your Free Seat",
+      recapHeading: "On October 27 you\u2019ll learn",
     },
     invitation: {
       eyebrow: "You're Invited",

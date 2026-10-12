@@ -5,6 +5,7 @@ import { Oct27Hero } from "@/components/oct27/Oct27Hero";
 import { Oct27Benefits } from "@/components/oct27/Oct27Benefits";
 import { Oct27Invitation } from "@/components/oct27/Oct27Invitation";
 import { Oct27Video } from "@/components/oct27/Oct27Video";
+import { Oct27Learn } from "@/components/oct27/Oct27Learn";
 import { Oct27Countdown } from "@/components/oct27/Oct27Countdown";
 import { SpeakerSection } from "@/components/oct27/SpeakerSection";
 import { Oct27Testimonials } from "@/components/oct27/Oct27Testimonials";
@@ -66,6 +67,7 @@ const Oct27Page = () => {
     <div style={PALETTE}>
       <Oct27Hero />
       <Oct27Video />
+      <Oct27Learn />
       <Oct27Benefits />
       <Oct27Invitation />
       <Oct27Countdown />

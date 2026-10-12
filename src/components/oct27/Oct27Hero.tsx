@@ -73,6 +73,7 @@ export const Oct27Hero = () => {
 
           <p className={styles.description}>{hero.subhead}</p>
 
+
           <div className={styles.when}>
             <p className={styles.whenLine}>
               <span className={styles.part}>

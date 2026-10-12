@@ -11,6 +11,14 @@ export const Oct27FinalCTA = () => (
       <p className={styles.copy}>
         Join Ariel Yankelewitz for a fresh perspective on dating, clarity, and lasting love.
       </p>
+      <div className="o27l-recap">
+        <p className="o27l-recapHeading">{COPY.oct27.learn.recapHeading}</p>
+        <ul className="o27l-recapList">
+          {COPY.oct27.learn.items.map((item) => (
+            <li key={item.recap}>{item.recap}</li>
+          ))}
+        </ul>
+      </div>
       <a href={OCT27_EVENT.lumaUrl} target="_blank" rel="noopener noreferrer" className={styles.cta}>
         Reserve your free seat <span aria-hidden="true">&rarr;</span>
       </a>
