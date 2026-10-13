@@ -38,7 +38,7 @@ export const Oct27Invitation = () => {
           <div className={styles.poster}>
             <Image
               src="/images/events/how-to-date-like-a-pro-poster.png"
-              alt="Marry Like a CEO — Dating Like a Pro, a free live event with Ariel Yankelewitz"
+              alt="Marry Like a CEO — Stop Dating the Wrong Men. Start Choosing the Right One., a free live event with Ariel Yankelewitz"
               fill
               sizes="(max-width: 767px) 70vw, 380px"
               className={styles.posterImg}

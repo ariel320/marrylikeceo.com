@@ -213,16 +213,16 @@ export const COPY = {
   },
   oct27: {
     meta: {
-      title: "Dating Like a Pro - Even If You Got Hurt in the Past — Marry Like a CEO",
+      title: "Stop Dating the Wrong Men. Start Choosing the Right One. — Marry Like a CEO",
       description:
         "A free live event with Ariel Yankelewitz for ambitious women ready for marriage and lasting love. Date with intention, clarity, and confidence — live, October 27, 2026.",
     },
     hero: {
       eyebrow: "Free Live Event",
-      headline: "DATING LIKE A PRO",
-      headlineAccent: "EVEN IF YOU GOT HURT IN THE PAST.",
-      headlineTitle: "Dating Like a Pro",
-      headlineSub: "Even If You Got Hurt in the Past",
+      headline: "Stop Dating the Wrong Men.",
+      headlineAccent: "Start Choosing the Right One.",
+      headlineTitle: "Stop Dating the Wrong Men.",
+      headlineSub: "Even if You\u2019ve Lost Faith in Dating",
       subhead:
         "Dating shouldn\u2019t feel like a guessing game. A free live training with Ariel Yankelewitz for ambitious women ready for marriage and lasting love.",
       freeBadge: "Free Live Event",
@@ -230,7 +230,7 @@ export const COPY = {
       ctaMicro: "Free to attend. Register on Luma to get your link.",
       imageAlt: "Ariel Yankelewitz",
       posterEyebrow: "Ariel Yankelewitz",
-      posterHeadline: "Dating Like a Pro - Even If You Got Hurt in the Past",
+      posterHeadline: "Stop Dating the Wrong Men. Start Choosing the Right One. (Even if You\u2019ve Lost Faith in Dating)",
     },
     learn: {
       eyebrow: "What You\u2019ll Learn",
@@ -259,7 +259,7 @@ export const COPY = {
     },
     invitation: {
       eyebrow: "You're Invited",
-      headline: "Dating Like a Pro - Even If You Got Hurt in the Past",
+      headline: "Stop Dating the Wrong Men. Start Choosing the Right One.",
       dateLabel: "October 27, 2026",
       dayLabel: "Tuesday",
       timeLabel: "7:00 PM ET",
@@ -288,7 +288,7 @@ export const COPY = {
     whyAttend: {
       eyebrow: "What You'll Learn",
       headline: "Stop dating on autopilot.",
-      headlineAccent: "Start dating like a pro.",
+      headlineAccent: "Start choosing the right one.",
       cards: [
         {
           icon: "Target",
@@ -352,7 +352,7 @@ export const COPY = {
       eyebrow: "October 27, 2026 — 7:00 PM ET",
       headline: "Your standards aren\u2019t too high.",
       headlineAccent: "Your strategy is too vague.",
-      subhead: "One free live event to fix that. Start dating like a pro.",
+      subhead: "One free live event to fix that. Start choosing the right one.",
       cta: "Reserve My Seat",
       micro: "No spam. Unsubscribe anytime.",
       hashtag: "#IChooseHim",
@@ -372,7 +372,7 @@ export const COPY = {
         "A live virtual Experience with Ariel Yankelewitz — the exact framework she used to choose her second husband, walked through in one sitting.",
       freeBadge: "This Event Has Ended",
       cta: "Join the Next Experience",
-      ctaMicro: "Next up:Dating Like a Pro - Even If You Got Hurt in the Past — October 27, 2026. Free to attend.",
+      ctaMicro: "Next up: Stop Dating the Wrong Men. Start Choosing the Right One. — October 27, 2026. Free to attend.",
       imageAlt: "Ariel Yankelewitz",
       posterEyebrow: "Ariel Yankelewitz",
       posterHeadline: "The Dating Code",
@@ -386,7 +386,7 @@ export const COPY = {
       formatLabel: "Live Virtual — Link Sent After Registration",
       body: "Ninety minutes with Ariel. The strategy, the standards, the exact sequence — taught the way she'd teach it to a friend she respected too much to waste her time.",
       cta: "Join the Next Experience",
-      micro: "Dating Like a Pro - Even If You Got Hurt in the Past — October 27, 2026.",
+      micro: "Stop Dating the Wrong Men. Start Choosing the Right One. — October 27, 2026.",
     },
     countdown: {
       eyebrow: "Doors Close In",

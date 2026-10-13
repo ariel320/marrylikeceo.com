@@ -40,15 +40,17 @@ export const Oct27Hero = () => {
         transition={{ duration: 1.2, ease: EASE }}
         className={styles.photoWrap}
       >
-        <Image
-          src="/images/A7409435-web.jpg"
-          alt={hero.imageAlt}
-          fill
-          priority
-          quality={90}
-          sizes="(max-width: 899px) 100vw, 60vw"
-          className={styles.photo}
-        />
+        <div className={styles.photoFrame}>
+          <Image
+            src="/images/A7409435-web.jpg"
+            alt={hero.imageAlt}
+            fill
+            priority
+            quality={90}
+            sizes="(max-width: 899px) 100vw, 60vw"
+            className={styles.photo}
+          />
+        </div>
         <p className={styles.signature}>
           <span className={styles.sigName}>Ariel Yankelewitz</span>
           <span className={styles.sigRole}>Founder, Marry Like a CEO</span>
@@ -65,8 +67,8 @@ export const Oct27Hero = () => {
           <p className={styles.label}>Free live event</p>
 
           <h1 className={styles.headline}>
-            <span className={styles.ivory}>Dating Like a</span>
-            <em className={styles.gold}>Pro</em>
+            <span className={styles.ivory}>{hero.headline}</span>
+            <em className={styles.gold}>{hero.headlineAccent}</em>
           </h1>
 
           <p className={styles.sub}>{hero.headlineSub}</p>

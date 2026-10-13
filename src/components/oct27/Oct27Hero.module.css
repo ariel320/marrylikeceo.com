@@ -41,6 +41,11 @@
   pointer-events: none;
 }
 
+.photoFrame {
+  position: absolute;
+  inset: 0;
+}
+
 .photo {
   object-fit: cover;
   object-position: 50% 30%;
@@ -102,10 +107,31 @@
       linear-gradient(to top, var(--mlc-ivory) 0%, transparent 10%);
   }
 
-  /* Shifts the portrait up so Ariel's head lines up with the
-     "FREE LIVE EVENT" label. Higher % = image moves further up. */
+  /* ── Head ↔ "FREE LIVE EVENT" alignment ──
+     The copy is top-aligned, so the label always sits at --label-y.
+     The photo frame keeps the portrait's real ratio (1600×2399) and is
+     shifted up so the top of Ariel's hair (31.3% down the photo) lands
+     exactly on that line, at every desktop width.
+     To nudge: change --head-y (31.3% = top of hair; ~38% = eyes). */
+  .photoWrap {
+    container-type: inline-size;
+    --label-y: 9.4rem;
+    --head-y: 0.313;
+  }
+
+  .photoFrame {
+    inset: auto;
+    left: 0;
+    right: 0;
+    top: calc(var(--label-y) - var(--head-y) * 100cqw * 2399 / 1600);
+    aspect-ratio: 1600 / 2399;
+    /* fade the photo's own bottom edge so it never ends in a hard line */
+    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+  }
+
   .photo {
-    object-position: 50% 46%;
+    object-position: 50% 0;
   }
 
   .signature {
@@ -128,9 +154,10 @@
 @media (min-width: 900px) {
   .inner {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     min-height: max(680px, 88svh);
-    padding: 7.5rem 0 4.5rem clamp(1.5rem, 7vw, 8rem);
+    /* top padding = where the "FREE LIVE EVENT" label sits (see --label-y) */
+    padding: 9rem 0 4.5rem clamp(1.5rem, 7vw, 8rem);
   }
 }
 
@@ -162,8 +189,10 @@
   margin: 1.25rem 0 0;
   font-family: var(--font-cormorant-garamond), Georgia, serif;
   font-weight: 300;
-  font-size: clamp(3.25rem, 6.6vw, 6.25rem);
-  line-height: 0.98;
+  /* Two full sentences now, so smaller than the old 2-word title */
+  font-size: clamp(2.5rem, 4.6vw, 4.5rem);
+  line-height: 1.04;
+  text-wrap: balance;
   letter-spacing: -0.01em;
 }
 
