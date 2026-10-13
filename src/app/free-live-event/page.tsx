@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     title: COPY.oct27.meta.title,
     description: COPY.oct27.meta.description,
     url: "/free-live-event",
-    images: ["/images/og.jpg"],
+    images: ["/images/events/oct27-og.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: COPY.oct27.meta.title,
     description: COPY.oct27.meta.description,
-    images: ["/images/og.jpg"],
+    images: ["/images/events/oct27-og.jpg"],
   },
 };
 
