@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { EntitySchema } from "@/components/SEO/EntitySchema";
+import { GoogleAdsTag } from "@/components/SEO/GoogleAdsTag";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -63,6 +64,9 @@ const RootLayout = ({
       lang="en"
       className={`${cormorantGaramond.variable} ${dmSans.variable} h-full antialiased`}
     >
+      <head>
+        <GoogleAdsTag />
+      </head>
       <body className="min-h-full flex flex-col">
         <EntitySchema />
         <Navbar />
